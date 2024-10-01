@@ -73,9 +73,8 @@ num1 = int(input("Introduce el primer número: "))
 num2 = int(input("Introduce el segundo número: "))
 num3 = int(input("Introduce el tercer número: "))
 num4 = int(input("Introduce el cuarto número: "))
-
-suma = num1 + num2 + num3 + num4
-media = suma / 4
+ 
+media =(num1 + num2 + num3 + num4)/ 4
 
 contador_superiores = 0
 numeros_superiores = ""
@@ -268,6 +267,7 @@ if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):
 else:
     print("El año %s, no es bisiesto."%(año))
 '''
+
 
 
 '''
