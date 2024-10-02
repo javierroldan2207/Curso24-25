@@ -190,6 +190,26 @@ Ejemplo:
 Hora 1: 12:35:37
 Hora 2: 12:36:36
 “Hora 2 es mayor”
+
+hora1, min1, seg1=1, 23, 37
+hora2, min2, seg2=1, 25, 36
+if hora1 > hora2:
+    resultado="Hora 1 es mayor."
+elif hora1<hora2:
+    resultado="Hora 2 es mayor"
+else:
+    if min1>min2:
+        resultado="Hora 1 es mayor"
+    elif min2>min1:
+        resultado="Hora 2 es mayor."
+    else:
+        if seg1>seg2:
+            resultado="Hora 1 es mayor."
+        elif seg1<seg2:
+            resultado="Hora 2 es mayor."
+        else:
+            resultado="Las dos horas son iguales"
+print(resultado)
 '''
 
 
