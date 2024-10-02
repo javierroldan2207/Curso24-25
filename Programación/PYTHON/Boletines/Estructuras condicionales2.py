@@ -74,25 +74,122 @@ tratarse de un año bisiesto).
 que calcule el precio del total de la estancia en el hotel para estudios y apartamentos
 dependiendo del mes y tiempo de estancia teniendo en cuenta los siguientes precios y
 los descuentos aplicables:BOLETIN 2.
-'''
 
+tipo=str(input("¿Que tipo de alojamiento desea?(Estudio/Apartamento): ")).lower()
+dias=int(input("¿Cuantos dias desea alojarse?: "))
+mes=str(input("¿En que mes desea alojarse?")).lower()
 
-'''
-8. Existen cuatro grupos sanguíneos en seres humanos, que se multiplican por dos si
-consideramos el factor Rh. Unos grupos son compatibles con otros atendiendo al
-criterio que podemos ver en las siguientes tablas.
-Elabora un programa que reciba dos grupos sanguíneos y devuelva si son
-compatibles y en qué sentido. Por ejemplo, si se recibe A y B debería decir que no
-son compatibles. Por el contrario, si se recibe 0 y AB debería indicar que son
-compatibles y AB es receptor de 0.
-'''
+if mes=="mayo" or mes=="octubre":
+        if tipo=="estudio":
+            precio_noche=50
+        elif tipo=="apartamento":
+            precio_noche=76
+elif mes=="junio" or mes=="septiembre":
+    if mes=="junio":
+        precio_noche=75.20
+    elif mes=="septiembre":
+        precio_noche=63.70
+elif mes=="julio" or mes=="agosto":
+    if mes=="julio":
+        precio_noche=76
+    elif mes=="agosto":
+        precio_noche=80
+else:
+    if tipo=="estudio":
+        precio_noche=40
+    elif tipo=="apartamento":
+        precio_noche=55
+precio_total=precio_noche*dias
 
-gs1=str(input("Introduzca el primer grupo sanguineo: ")).lower()
-gs2=str(input("Introduce el segundo grupo sanguineo: ")).lower()
-
-if gs1=="a":
-    if gs2=="a" or gs2=="ab":
-        print("El grupo sanguineo %s, dona a el grupo %s"%(gs1,gs2))
+if tipo=="estudio" and (mes=="mayo" or mes=="octubre"):
+    if dias>20:
+        descuento=0.25
+        precio_total-=precio_total*descuento
+    if dias>10:
+        descuento=0.05
+        precio_total-=precio_total*descuento
     
-if gs1=="b":  
-    
+elif tipo=="estudio" and (mes=="junio" or mes=="septiembre"):
+    if dias>12:
+        descuento=0.20
+        precio_total-=precio_total*descuento
+elif tipo=="apartamento" and dias>10:
+    descuento=0.10
+    precio_total-=precio_total*descuento
+
+print("El precio total de la estancia es: %s"%(precio_total))
+'''
+
+'''
+5. Crea un programa que reciba las coordenadas de un rectángulo ({x1, y1} y {x2
+, y2})y de un punto (x, y)y determine si el punto se encuentra dentro del rectángulo(True) o
+fuera de éste (False). Considera que siempre se cumple x1>x2 y1>y2.
+
+x1 = float(input("Ingresa x1: "))
+y1 = float(input("Ingresa y1: "))
+x2 = float(input("Ingresa x2: "))
+y2 = float(input("Ingresa y2: "))
+x = float(input("Ingresa la coordenada x del punto: "))
+y = float(input("Ingresa la coordenada y del punto: "))
+
+if x2 <= x <= x1 and y2 <= y <= y1:
+    dentro = True
+else:
+    dentro = False
+print("El punto está dentro del rectángulo:", dentro)
+'''
+
+'''
+6. Elabora otro programa que reciba también un rectángulo y un punto y devuelva True
+cuando el punto se encuentre en el borde del rectángulo y False en caso contrario.
+
+x1 = float(input("Ingresa x1: "))
+y1 = float(input("Ingresa y1: "))
+x2 = float(input("Ingresa x2: "))
+y2 = float(input("Ingresa y2: "))
+x = float(input("Ingresa la coordenada x del punto: "))
+y = float(input("Ingresa la coordenada y del punto: "))
+
+if (x == x1 or x == x2) and (y2 <= y <= y1):
+    borde = True
+elif (y == y1 or y == y2) and (x2 <= x <= x1):
+    borde = True
+else:
+    borde = False
+
+print("El punto está en el borde del rectángulo:",borde)
+'''
+'''
+7. Crea una aplicación que reciba el día y mes de nacimiento de una persona y nos
+diga cuál es su signo del zodiaco sabiendo que se distribuyen a lo largo del año de
+la siguiente forma:
+
+dia=int(input("Introduce tu dia de nacimiento: "))
+mes=str(input("Introduce tu mes de nacimiento: ")).lower()
+
+if (mes=="marzo" and dia>=21) or (mes=="abril" and dia<=19):
+    signo="Aries"
+elif (mes=="abril" and dia>=20) or (mes=="abril" and dia<=19): 
+    signo="Tauro"
+elif (mes=="mayo" and dia>=21) or (mes=="junio" and dia<=21): 
+    signo="Gemenis"
+elif (mes=="junio" and dia>=22) or (mes=="julio" and dia<=22): 
+    signo="Cancer"
+elif (mes=="julio" and dia>=23) or (mes=="agosto" and dia<=22): 
+    signo="Leo"
+elif (mes=="agosto" and dia>=23) or (mes=="septiembre" and dia<=22): 
+    signo="Virgo"
+elif (mes=="septiembre" and dia>=23) or (mes=="octubre" and dia<=23): 
+    signo="Libra"
+elif (mes=="octubre" and dia>=24) or (mes=="nobiembre" and dia<=21): 
+    signo="Escorpio"
+elif (mes=="diciembre" and dia>=23) or (mes=="enero" and dia<=22): 
+    signo="Capricornio"
+elif (mes=="enero" and dia>=20) or (mes=="febrero" and dia<=18): 
+    signo="Acuario"
+elif (mes=="febrero" and dia>=19) or (mes=="marzo" and dia<=22): 
+    signo="Piscis"
+
+print("Tu signo del zodiaco es %s."%(signo))
+'''
+
