@@ -192,4 +192,118 @@ elif (mes=="febrero" and dia>=19) or (mes=="marzo" and dia<=22):
 
 print("Tu signo del zodiaco es %s."%(signo))
 '''
+'''
+8. Existen cuatro grupos sanguíneos en seres humanos, que se multiplican por dos si
+consideramos el factor Rh. Unos grupos son compatibles con otros atendiendo al
+criterio que podemos ver en las siguientes tablas.
+Elabora un programa que reciba dos grupos sanguíneos y devuelva si son
+compatibles y en qué sentido. Por ejemplo, si se recibe A y B debería decir que no
+son compatibles. Por el contrario, si se recibe 0 y AB debería indicar que son
+compatibles y AB es receptor de 0.
+
+donante = input("Ingrese el grupo sanguíneo del donante (ej. A+, B-, 0+, AB-): ")
+receptor = input("Ingrese el grupo sanguíneo del receptor (ej. A+, B-, 0+, AB-): ")
+compatible = False
+receptor_de = ""
+if donante == 'A+':
+    if receptor == 'A+' or receptor == 'A-' or receptor == 'AB+' or receptor == 'AB-':
+        compatible = True
+        receptor_de = receptor
+elif donante == 'A-':
+    if receptor == 'A-' or receptor == 'AB-':
+        compatible = True
+        receptor_de = receptor
+elif donante == 'B+':
+    if receptor == 'B+' or receptor == 'B-' or receptor == 'AB+' or receptor == 'AB-':
+        compatible = True
+        receptor_de = receptor
+elif donante == 'B-':
+    if receptor == 'B-' or receptor == 'AB-':
+        compatible = True
+        receptor_de = receptor
+elif donante == 'AB+':
+    if receptor == 'AB+':
+        compatible = True
+        receptor_de = receptor
+elif donante == 'AB-':
+    if receptor == 'AB-' or receptor == 'A-' or receptor == 'B-':
+        compatible = True
+        receptor_de = receptor
+elif donante == '0+':
+    if receptor == 'A+' or receptor == 'B+' or receptor == 'AB+' or receptor == '0+':
+        compatible = True
+        receptor_de = receptor
+elif donante == '0-':
+    if receptor == 'A-' or receptor == 'B-' or receptor == 'AB-' or receptor == '0-':
+        compatible = True
+        receptor_de = receptor
+if compatible:
+    print(f"{donante} es compatible con {receptor}. {receptor} es receptor de {donante}.")
+else:
+    print(f"{donante} no es compatible con {receptor}.")
+'''
+'''
+9. En el gimnasio Jacafitness tienen el siguiente horario: Los Lunes, Miércoles y
+Jueves imparten Spinning de 12 a 14, Yoga de 16 a 20 y Body combat de 20 a
+22; Los Martes y Jueves La sesión de Spinning y Yoga se intercambian. Elabora
+un programa que dé la bienvenida al gimnasio y tras preguntar por la hora y el
+día de la semana te indique la actividad que puedes realizar.
+
+print("¡Bienvenido al gimnasio Jacafitness!")
+dia = input("Ingrese el día de la semana (Lunes, Martes, Miércoles, Jueves, Viernes, Sábado, Domingo): ")
+hora = int(input("Ingrese la hora (en formato 24h, de 0 a 23): "))
+actividad = ""
+if dia == "Lunes" or dia == "Miércoles" or dia == "Jueves":
+    if hora >= 12 and hora < 14:
+        actividad = "Spinning"
+    elif hora >= 16 and hora < 20:
+        actividad = "Yoga"
+    elif hora >= 20 and hora < 22:
+        actividad = "Body combat"
+elif dia == "Martes" or dia == "Jueves":
+    if hora >= 12 and hora < 14:
+        actividad = "Yoga"
+    elif hora >= 16 and hora < 20:
+        actividad = "Spinning"
+    elif hora >= 20 and hora < 22:
+        actividad = "Body combat"
+if dia == "Viernes" or dia == "Sábado" or dia == "Domingo":
+    actividad = "No hay actividades programadas."
+if actividad:
+    print("Puedes realizar la actividad: %s." % actividad)
+else:
+    print("No hay actividades programadas en ese horario.")
+'''
+
+'''
+10. En el gimnasio Jacatfitness para el que ya hemos trabajado nos piden que
+realicemos un programa para determinar si deberías acudir al médico para que te
+haga una revisión, para ello debemos hacer las siguientes preguntas:
+● ¿Peso?
+● ¿Edad?
+● ¿Tipo de vida? (Sedentaria/Activa/Muy activa)
+Las recomendaciones para ir al médico son:
+● Si tienes más de 70 años y lleva una vida Sedentaria
+● Si pesa más de 100 kg sea cual sea la edad.
+● Si pesa más de 74,4 kg y tiene más de 50 años
+En cualquier otro caso se mostrará “No es urgente que acuda al médico si no tiene
+problemas de salud”
+
+print("¡Bienvenido al gimnasio Jacafitness!")
+peso = float(input("Ingrese su peso en kg: "))
+edad = int(input("Ingrese su edad: "))
+tipo_vida = input("Ingrese su tipo de vida (Sedentaria/Activa/Muy activa): ")
+deberia_ir = False
+if edad > 70 and tipo_vida == "Sedentaria":
+    deberia_ir = True
+elif peso > 100:
+    deberia_ir = True
+elif peso > 74.4 and edad > 50:
+    deberia_ir = True
+if deberia_ir:
+    print("Deberías acudir al médico para que te haga una revisión.")
+else:
+    print("No es urgente que acuda al médico si no tiene problemas de salud.")
+
+'''
 
