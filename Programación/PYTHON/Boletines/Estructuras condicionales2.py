@@ -67,7 +67,42 @@ else:
 3. Crea un programa que dada una fecha en formato (dd-mm-yyyy), nos devuelva cuántos
 días han transcurrido desde el 1 de enero de ese mismo año (considera que puede
 tratarse de un año bisiesto).
+
+dia,mes,anyo=15,1,2024
+total_dias=0
+
+if mes==2:
+    total_dias=31
+    if anyo%4==0 and anyo%100!=0 or anyo%400==0:
+        total_dias+=1
+elif mes==3:
+    total_dias=31+28
+elif mes==4:
+    total_dias=31+28+31
+elif mes==5:
+    total_dias=31+28+31+30
+elif mes==6:
+    total_dias=31+28+31+30+31
+elif mes==7:
+    total_dias=31+28+31+30+31+30
+elif mes==8:
+    total_dias=31+28+31+30+31+30+31
+elif mes==9:
+    total_dias=31+28+31+30+31+30+31+31
+elif mes==10:
+    total_dias=31+28+31+30+31+30+31+30+30
+elif mes==11:
+    total_dias=31+28+31+30+31+30+31+30+31+31
+elif mes==12:
+    total_dias=31+28+31+30+31+30+31+30+31+30+30
+
+if (anyo%4==0 and anyo%100!=0 or anyo%400==0) and mes>2:
+    total_dias+=1
+    
+total_dias+=dia
 '''
+
+
 
 '''
 4. Un hotel ofrece dos tipos de habitaciones: estudios y apartamentos.Crea un programa
