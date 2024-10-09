@@ -27,9 +27,6 @@ while contador <= fin:
     contador += 1
 '''
 
-
-
-
 '''
 2. Crea un programa que reciba un número y a continuación muestre la tabla de
 multiplicar de ese número. Utiliza sólo bucles de tipo while.
@@ -41,7 +38,6 @@ while contador < 11:
     print("%s X %s=%s"%(num,contador,resultado))
     contador+=1
 '''
-
 
 
 '''
@@ -57,9 +53,9 @@ media de éstos.
 num=float(input("Introduce un numero: "))
 contador=1
 while num>0 and num<10000:
-    num=float(input("Introduce sigueiente numero: "))
     contador+=1
     num+=num
+    num=float(input("Introduce sigueiente numero: "))
 media=num/contador
 print("Se han introducido %s numeros y la media es de %s"%(contador,media))
 '''
@@ -78,4 +74,50 @@ for i in range(1, num + 1):
     suma += i
 print("La suma de los numero entre 1 y %s es de %s."%(num,suma))
 '''
+
+'''
+6. Crea un programa similar al anterior, pero que reciba dos números enteros positivos
+n, m y devuelva la suma de los números entre n y m. Valida los datos.
+
+num1=int(input("Introduce un numero entero: "))
+num2=int(input("Introduce otro numero entero: "))
+while num1<0 or num2<0:
+    num1=int(input("Numero no válido, vuelve a introducir un numero entero: "))
+    num2=int(input("Numero no válido, vuelve a introducir un numero entero: "))
+
+if num1<num2:
+    suma=0
+    for i in range(num1,num2+1):
+        suma+=i
+else:
+    suma=0
+    for i in range(num2,num1+1):
+        suma+=i
+print("La suma es de: ",suma)
+'''
+
+'''
+7. Se desea crear un programa que lea desde teclado una serie de números hasta que
+aparezca alguno menor que 1000. Cuando esto ocurra deberá mostrar cuál ha sido
+el número más grande que se ha introducido.
+
+num=int(input("Introduce un numero mayor a 1000: "))
+num2=-1
+while num>1000:
+    if num>num2:
+        num2=num
+    num=int(input("Vuelve a introducir un numero mayor a 1000: "))
+print(num2)
+'''
+
+'''
+8. Crea un programa que reciba dos números num_1 y num_2 y devuelva el producto
+de ambos, pero sin utilizar el operador de la multiplicación (*). Los números pueden
+ser enteros positivos/negativos.
+'''
+
+num1=int(input("Introduce primer numero entero: "))
+num2=int(input("Introduce segundo numero entero: "))
+producto=0
+for i in range(num2):
 
