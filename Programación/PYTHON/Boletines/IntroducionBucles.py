@@ -114,10 +114,100 @@ print(num2)
 8. Crea un programa que reciba dos números num_1 y num_2 y devuelva el producto
 de ambos, pero sin utilizar el operador de la multiplicación (*). Los números pueden
 ser enteros positivos/negativos.
+
+num_1 = int(input("Ingresa el primer número: "))
+num_2 = int(input("Ingresa el segundo número: "))
+producto = 0
+if num_2 < 0:
+    num_1 = -num_1
+    num_2 = -num_2
+
+while num_2 > 0:
+    producto += num_1
+    num_2 -= 1
+print("El producto es:", producto)
 '''
 
-num1=int(input("Introduce primer numero entero: "))
-num2=int(input("Introduce segundo numero entero: "))
-producto=0
-for i in range(num2):
+'''
+10. Escribe un programa que pida al usuario cuántos números positivos quiere introducir
+para a continuación pedirlos por consola. Si el usuario introduce un número erróneo
+volverá a pedirlo y una vez que se hayan introducido todos mostrará la media, cuál
+es el mayor y cuál el menor.
+
+cantidad = int(input("¿Cuántos números positivos quieres introducir?: "))
+suma = 0
+contador = 0
+numero = int(input(f"Introduce el número 1: "))
+
+while numero <= 0:
+    print("Error: Debes introducir un número positivo.")
+    numero = int(input(f"Introduce el número 1: "))
+
+suma += numero
+mayor = numero
+menor = numero
+contador += 1
+while contador < cantidad:
+    numero = int(input(f"Introduce el número {contador + 1}: "))
+    if numero > 0:  
+        suma += numero
+        if numero > mayor:
+            mayor = numero
+        if numero < menor:
+            menor = numero
+        contador += 1
+    else:
+        print("Error: Debes introducir un número positivo.")
+
+media = suma / cantidad
+print("La media de los números es:", media)
+print("El número mayor es:", mayor)
+print("El número menor es:", menor)
+'''
+
+'''
+Escribe un programa que reciba un valor y cree una pirámide de asteriscos de altura
+ese valor (cada línea contiene un número impar de asteriscos). Por ejemplo, para
+valor = 3 tendríamos:
+
+altura = int(input("Introduce la altura de la pirámide: "))
+
+for i in range(1, altura + 1):
+    espacios = altura - i
+    asteriscos = 2 * i - 1
+    print(' ' * espacios + '*' * asteriscos)
+'''
+
+'''
+12. Crea un programa que reciba un entero positivo mayor que 0 y a continuación
+informe si es un número perfecto. Un número es perfecto si es igual a la suma de
+todos sus divisores.
+
+numero = int(input("Introduce un número entero positivo mayor que 0: "))
+
+while numero <= 0:
+    numero = int(input("Introduce un número entero positivo mayor que 0: "))
+suma_divisores = 0
+for i in range(1, numero):
+    if numero % i == 0: 
+        suma_divisores += i
+if suma_divisores == numero:
+    print(f"{numero} es un número perfecto.")
+else:
+    print(f"{numero} no es un número perfecto.")
+
+'''
+'''
+14. Write a program in python to display a pattern like a diamond.
+
+filas = int(input("Introduce el número de filas para la mitad del diamante: "))
+for i in range(1, filas + 1):
+    espacios = filas - i
+    asteriscos = 2 * i - 1
+    print(' ' * espacios + '*' * asteriscos)
+for i in range(filas - 1, 0, -1):
+    espacios = filas - i
+    asteriscos = 2 * i - 1
+    print(' ' * espacios + '*' * asteriscos)
+'''
 
