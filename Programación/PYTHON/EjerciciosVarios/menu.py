@@ -16,9 +16,13 @@ while eleccion!=4:
 
     elif eleccion==2:
         dinero_retirar=int(input("¿Cuanto dinero desea retirar? "))
+        if dinero_retirar<saldo:
+            saldo-=dinero_retirar
+        else:
+            print("No tienes suficiente saldo. ")
     elif eleccion==3:
         print(saldo)
     
-    print("_"+30)
+ 
     print(MENU)
     eleccion=int(input("¿Que acción desea realizar?"))
