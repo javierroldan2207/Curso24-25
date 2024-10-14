@@ -12,6 +12,8 @@ saldo=0
 while eleccion!=4:
     if eleccion==1:
         dinero_ingresar=int(input("¿Cuanto dinero desea ingresar? "))
+        while dinero_ingresar<0:
+           dinero_ingresar=int(input("Error: cantidad introducida erronea, vuelva a introducir: "))
         saldo+=dinero_ingresar
 
     elif eleccion==2:
