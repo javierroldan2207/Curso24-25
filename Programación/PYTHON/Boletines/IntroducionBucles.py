@@ -12,7 +12,7 @@ else:
     for i in range(num1,num2+1):
         print(i)
     
-#WHILE
+#WHILE------------------------------------------------------------
 num1=int(input("Ingrese el primer número: "))
 num2=int(input("Ingrese el segundo número: "))
 if num1<num2:
@@ -43,8 +43,22 @@ while contador < 11:
 '''
 3. Escribe un programa que reciba dos números y muestre por pantalla todos los
 números que hay en ese intervalo que son múltiplos de 7 [for/while].
-'''
 
+#FOR
+num1, num2= 13, 21
+for i in range(num1,num2+1):
+    if i%7==0:
+        print(i)
+
+#WHILE--------------------------------------------------------
+num1,num2=13,50
+contador=num1
+while contador<=num2:
+    if contador%7==0:
+        print(contador)
+    contador+=1
+        
+'''
 '''
 4. Crea un programa que reciba números hasta que se introduzca uno fuera del rango
 0 - 10.0000. En ese momento informará de cuántos números se han introducido y la
