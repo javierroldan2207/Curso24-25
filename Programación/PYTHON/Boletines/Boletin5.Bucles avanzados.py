@@ -19,18 +19,32 @@ print("La suma de la serie es de.", suma)
 2. Write a program to print Floyd's Triangle with two options: binary-based or
 decimal-based triangles.
 
-'''
 num_base=int(input("Introduce el numero de filas de la piramide: "))
 tipo=input("Introduce el tipo de priramide, (Decimal o Binario): ").lower()
 num=1
 for i in range(1,num_base+1):
-    espacios=num_base-i
-    num+=1
+    for j in range(i):
+        espacios=num_base-1
+        print(num)
+        num+=1  
+'''
+
     
 '''
 3. Write a program to find the sum of the series [ x - x3 + x5 +... + xn] for a given number
 of terms.
+
+x = int(input("Introduce el valor de x: "))
+n = int(input("Introduce el número de términos: "))
+
+suma = 0
+signo = 1
+for i in range(1, n + 1, 2):  
+    suma += signo * (x ** i)  
+    signo *= -1  
+print("La suma de la serie es:", suma)
 '''
+
 '''
 5. Diseña un programa que pida dos números enteros y nos muestre los siguientes
 diez números que son múltiplos del segundo introducido a partir del primero. Por
