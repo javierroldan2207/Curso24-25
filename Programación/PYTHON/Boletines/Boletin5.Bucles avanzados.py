@@ -28,8 +28,7 @@ for i in range(1,num_base+1):
         print(num)
         num+=1  
 '''
-
-    
+  
 '''
 3. Write a program to find the sum of the series [ x - x3 + x5 +... + xn] for a given number
 of terms.
@@ -59,7 +58,6 @@ for i in range(num):
 print("La suma de la serie es de.", suma)
 '''
 
-
 '''
 5. Diseña un programa que pida dos números enteros y nos muestre los siguientes
 diez números que son múltiplos del segundo introducido a partir del primero. Por
@@ -77,6 +75,7 @@ while contador<10:
     num1+=1
     contador+=1
 '''
+
 '''
 6. La secuencia siguiente está definida para el conjunto de los números enteros:
 
@@ -92,6 +91,14 @@ else:
             n = 3*n+1  
         print(n)
 '''
+
+'''
+7. Diseña un algoritmo en el que a partir de una fecha introducida por teclado con
+formato día, mes, año se obtenga la fecha del día siguiente. El programa debe
+terminar cuando la fecha introducida no sea válida (por ejemplo, 30-02-2024).
+
+'''
+
 '''
 8. Crea un programa que reciba un número entero positivo mayor que cero y devuelva
 una secuencia de Fibonacci de longitud igual a este valor.
