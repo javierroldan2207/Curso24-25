@@ -92,3 +92,43 @@ else:
             n = 3*n+1  
         print(n)
 '''
+'''
+8. Crea un programa que reciba un número entero positivo mayor que cero y devuelva
+una secuencia de Fibonacci de longitud igual a este valor.
+La sucesión de Fibonacci es una sucesión numérica en la que cada término es igual
+a la suma de los dos anteriores, salvo los dos primeros que se toman como 1 y 1.
+Así, una sucesión de longitud nueve sería: 1, 1, 2, 3, 5, 8, 13, 21, 34
+
+n = int(input("Introduce un número entero positivo mayor que cero: "))
+while n <= 0:
+    print("Por favor, introduce un número mayor que cero.")
+    n = int(input("Introduce un número entero positivo mayor que cero: "))
+a= 1
+b=1
+print(a, end=", ")  
+if n > 1:
+    print(b, end=", ")  
+for i in range(2, n):
+    siguiente = a + b  
+    print(siguiente, end=", ")  
+    a, b = b, siguiente
+'''
+
+'''
+9. Se considera la serie definida por: a1=0, a2=1, an=3*an-1+2*an-2
+(n≥3) Se desea crear
+un programa que calcule el valor y el rango (subíndice) del primer término que sea
+mayor o igual a 1000.
+
+a1 =0
+a2 =1
+n =2  
+an =a1  
+while an<1000:
+    n +=1  
+    an =3*a2+2*a1  
+    a1, a2=a2,an  
+print(f"El primer término mayor o igual a 1000 es a{n} = {an}")
+'''
+
+
