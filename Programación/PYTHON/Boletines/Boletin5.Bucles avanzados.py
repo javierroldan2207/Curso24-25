@@ -138,4 +138,64 @@ while an<1000:
 print(f"El primer término mayor o igual a 1000 es a{n} = {an}")
 '''
 
+'''
+10. Juan recibe dos tipos de regalos de cumpleaños según el año en el que esté: si el
+año es impar su familia le regala un puzzle; si es par, recibe dinero.
+Cada nuevo cumpleaños recibe más regalos: así, cada año que recibe puzzles
+obtiene el doble que el anterior; sin embargo, si se trata de dinero recibe 15€ más
+que en la anterior ocasión.
+Elabora un programa que calcule cuántos regalos ha recibido en total Juan, para una
+edad determinada sabiendo que en el primer cumpleaños le regalaron un puzzle y
+en el segundo 20€.
+
+edad=int(input("Introduce la edad de Juan: "))
+contador=1
+puzle=1
+dinero=20
+total_puzle=0
+total_dinero=0
+while contador<=edad:
+    if contador%2==1:
+        total_puzle+=puzle
+        puzle*=2
+    else:
+        total_dinero+=dinero
+        dinero+=15
+    contador+=1
+print(f"Juan tiene {edad} año/s y a recivido {total_puzle} puzzles y {total_dinero}$ en total.")
+'''
+
+
+'''
+11. Crea un programa que reciba el nombre de una figura geométrica y la longitud del
+lado de ésta y genere una figura vacía como las siguientes. Incluye la posibilidad de
+que se cambie el símbolo utilizado para pintar la figura.
+
+figura = input("Introduce el nombre de la figura (cuadrado, rombo, triangulo): ").lower()
+lado = int(input("Introduce la longitud del lado: "))
+simbolo = input("Introduce el símbolo que quieres utilizar: ")
+if figura == "cuadrado":
+    for i in range(lado):
+        if i==0 or i==lado-1: 
+            print(simbolo*lado)
+        else:  
+            print(simbolo+ " " * (lado-2)+simbolo)
+elif figura == "rombo":
+    for i in range(lado):
+        if i < lado // 2: 
+            print(" " * (lado//2-i)+simbolo+ " " * (i * 2)+simbolo*(i > 0))
+        else:  
+            print(" " * (i-lado//2)+simbolo+ " " * ((lado-i-1)*2)+simbolo * (i<lado-1))
+elif figura == "triangulo":
+    for i in range(lado):
+        if i < lado - 1: 
+            print(simbolo + " " * (i*2)+simbolo * (i>0))
+        else: 
+            print(simbolo*(lado*2-1))
+
+else:
+    print("Figura no reconocida. Por favor, introduce cuadrado, rombo o triángulo.")
+'''
+
+
 
