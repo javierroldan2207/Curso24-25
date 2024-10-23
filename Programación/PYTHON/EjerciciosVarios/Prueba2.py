@@ -67,15 +67,15 @@ while total_empleados < tamaño_empresa:
         print("Edad inválida. Debe estar entre 18 y 65.")
         edad = int(input("Ingrese la edad del empleado (18-65): "))
 
-    sexo = input("Ingrese el sexo del empleado (h para hombre, m para mujer): ")
+    sexo = input("Ingrese el sexo del empleado (h para hombre, m para mujer): ").lower()
     while sexo != 'h' and sexo != 'm':
         print("Sexo inválido. Ingrese 'h' para hombre o 'm' para mujer.")
-        sexo = input("Ingrese el sexo del empleado (h para hombre, m para mujer): ")
+        sexo = input("Ingrese el sexo del empleado (h para hombre, m para mujer): ").lower()
 
-    lenguaje = input("Ingrese el lenguaje de programación habitual (java o python): ")
+    lenguaje = input("Ingrese el lenguaje de programación habitual (java o python): ").lower()
     while lenguaje != 'java' and lenguaje != 'python':
         print("Lenguaje inválido. Ingrese 'java' o 'python'.")
-        lenguaje = input("Ingrese el lenguaje de programación habitual (java o python): ")
+        lenguaje = input("Ingrese el lenguaje de programación habitual (java o python): ").lower()
 
     total_empleados += 1
     if lenguaje == 'python':
