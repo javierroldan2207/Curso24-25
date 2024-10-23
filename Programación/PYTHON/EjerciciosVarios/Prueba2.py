@@ -106,12 +106,12 @@ if cont_java > 0:
 else:
     edad_media_java = 0
 
-print(f"\n{porcentaje_python:.1f}% de empleados utilizan Python.")
+print(f"\n{porcentaje_python}% de empleados utilizan Python.")
 print(f"De los que, {cont_hombres_python} son hombres y {cont_mujeres_python} son mujeres.")
-print(f"La edad media es de {edad_media_python:.2f} años.")
+print(f"La edad media es de {edad_media_python} años.")
 
-print(f"\n{porcentaje_java:.1f}% de empleados utilizan Java.")
+print(f"\n{porcentaje_java}% de empleados utilizan Java.")
 print(f"De los que, {cont_hombres_java} son hombres y {cont_mujeres_java} son mujeres.")
-print(f"La edad media es de {edad_media_java:.2f} años.")
+print(f"La edad media es de {edad_media_java} años.")
 
 
