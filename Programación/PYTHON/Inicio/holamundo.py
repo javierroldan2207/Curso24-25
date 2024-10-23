@@ -18,4 +18,4 @@ edad=23
 print("Hola",nombre," tines",edad,"años." )
 print("Hola %s tienes %s años." %(nombre,edad))
 print ("Hola {} tienes {} años.".format(nombre,edad))
-
+print(f"Hola {nombre} tienes {edad} años.")
