@@ -1,3 +1,5 @@
+#Ejercicio pendiente de revisión.(FALLOS).
+
 opcion1=""
 opcion2=""
 while opcion1!="lagarto" or opcion1!="tijeras" or opcion1!="piedra" or opcion1!="spock" or opcion1!="papel" or opcion2!="lagarto" or opcion2!="tijeras" or opcion2!="piedra" or opcion2!="spock" or opcion2!="papel":
