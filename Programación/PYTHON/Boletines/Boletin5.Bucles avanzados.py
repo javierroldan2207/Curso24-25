@@ -196,6 +196,20 @@ elif figura == "triangulo":
 else:
     print("Figura no reconocida. Por favor, introduce cuadrado, rombo o triángulo.")
 '''
+'''
+12. Crea un programa que lea del teclado un número y genere un cuadrado con el patrón
+siguiente donde cada elemento está separado por un espacio.
 
+n = int(input("Introduce el tamaño del cuadrado: "))
+
+for i in range(n):
+    for j in range(n):
+        if i == 0 or i == n-1 or j == 0 or j == n-1:
+            print(2, end=" ")
+        else:
+            print(1, end=" ")
+    print()
+'''
+ 
 
 
