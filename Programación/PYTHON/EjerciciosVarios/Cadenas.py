@@ -35,14 +35,27 @@ for caracter in cadena:
     print(caracter)
 '''
 
+#Contar caracteres en minusculas.
 
-def lowCaseInString(letra,cadena):
-    contador=0
-    for letra in cadena:
-        if letra.lower()==cadena:
-            contador+=1
+def contar_minusculas(cadena):
+    contador = 0
+    for caracter in cadena:
+        if caracter.islower():
+            contador += 1
     return contador
 
-letra=" "
-cadena="Esto es una cadena de texto."
-print(lowCaseInString(letra,cadena))
+cadena = "Esto es una cadena de texto"
+print("Número de letras minúsculas:", contar_minusculas(cadena))
+
+
+#Contar caracteres en mayusculas.
+
+def contar_mayusculas(cadena):
+    contador = 0
+    for caracter in cadena:
+        if caracter.isupper(): 
+            contador += 1
+    return contador
+
+cadena ="Esto es una cadena de texto"
+print("Número de letras mayúsculas:", contar_mayusculas(cadena))
