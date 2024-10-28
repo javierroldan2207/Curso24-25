@@ -16,7 +16,7 @@ while opcion!= "fin":
     num_entrada=int(input("¿Cuantas entradas desea comprar?(Maximo 50): "))
 
     while num_entrada<=0 or num_entrada>50:
-        num_entrada=int(input("vALOR INTRODUCIDO INCORRECTO. ¿Cuantas entradas desea comprar?(Maximo 50): "))
+        num_entrada=int(input("VALOR INTRODUCIDO INCORRECTO. ¿Cuantas entradas desea comprar?(Maximo 50): "))
 
     if num_entrada>=10:
         if  dia=="lunes" or dia=="martes" or dia=="miercoles" or dia=="jueves":
