@@ -5,5 +5,5 @@ def palindromo(cadena):
             cadena_min=cadena.lower()
     return cadena_min== cadena[::-1]
 
-cadena="antootna"
+cadena="anaantootna ana"
 print(palindromo(cadena))
