@@ -34,9 +34,8 @@ cadena = "Hola, mundo!"
 for caracter in cadena:
     print(caracter)
 '''
-
+'''
 #Contar caracteres en minusculas.
-
 def contar_minusculas(cadena):
     contador = 0
     for caracter in cadena:
@@ -49,7 +48,6 @@ print("Número de letras minúsculas:", contar_minusculas(cadena))
 
 
 #Contar caracteres en mayusculas.
-
 def contar_mayusculas(cadena):
     contador = 0
     for caracter in cadena:
@@ -59,3 +57,4 @@ def contar_mayusculas(cadena):
 
 cadena ="Esto es una cadena de texto"
 print("Número de letras mayúsculas:", contar_mayusculas(cadena))
+'''
