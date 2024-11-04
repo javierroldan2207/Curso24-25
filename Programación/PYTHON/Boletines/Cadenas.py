@@ -61,5 +61,17 @@ def numerosEnCadena(cadena):
 cadena = input("Introduce una cadena de texto: ")
 print("El número de caracteres numéricos es:", numerosEnCadena(cadena))
 '''
+'''
+6. Realizar una función que busque una palabra escondida dentro de un texto. Las letras de
+la palabra escondida deben estar en el mismo orden en la cadena que la contiene. Por
+ejemplo, si la cadena es “supercalifragilisticoespialidoso” y la palabra que queremos
+buscar es “rapido”, entonces si se encontrará y deberá devolver True, en caso contrario
+deberá devolver False::
+supercalifragilisticoespialidoso⇒ rapido: True
+sfrsagilisticoesidoso⇒ rapido: False
+'''
+cadena="supercalifragilisticoespialidoso"
+buscar=input("Introduce la palabra a buscar: ")
+
 
  
