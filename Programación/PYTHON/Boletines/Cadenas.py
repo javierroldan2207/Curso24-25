@@ -2,7 +2,7 @@
 1. Diseña una función llamada `caracteresEnCadena` que tenga como parámetros de entrada una cadena de caracteres y un carácter, 
 y que devuelva cuántas veces aparece ese carácter en la cadena. Debe contar independientemente de si la cadena y el carácter están en minúsculas o mayúsculas.
 
-def caracteresEnCadena(cadena, caracter):
+def caracteres_en_cadena(cadena, caracter):
     cadena = cadena.lower()
     caracter = caracter.lower()
     contador = 0
@@ -20,7 +20,7 @@ print("El carácter aparece", caracteresEnCadena(cadena, caracter), "veces en la
 2. Diseña una función llamada minusculasEnCadena que tenga como parámetro una cadena de caracteres. 
 El método debe devolver cuántos de esos caracteres son letras minúsculas.
 
-def minusculasEnCadena(cadena):
+def minusculas_en_cadena(cadena):
     contador = 0
     for caracter in cadena:
         if caracter.islower():  
@@ -36,7 +36,7 @@ print("El número de letras minúsculas es:", minusculasEnCadena(cadena))
 3. Diseña una función llamada `mayusculasEnCadena` que tenga como parámetro una cadena de caracteres, 
 y el método debe devolver cuántos de esos caracteres son letras mayúsculas.
 
-def mayusculasEncadena(cadena):
+def mayusculas_en_cadena(cadena):
     contador = 0
     for caracter in cadena:
         if caracter.islower():
@@ -51,7 +51,7 @@ print("El numero de letras mayusculas es: ",mayusculasEncadena(cadena))
 4. Diseña una función llamada `numerosEnCadena` que reciba como parámetro una cadena de caracteres y 
 devuelva cuántos de esos caracteres son números.
 
-def numerosEnCadena(cadena):
+def numeros_en_cadena(cadena):
     contador = 0
     for caracter in cadena:
         if caracter.isdigit():  
@@ -70,8 +70,46 @@ deberá devolver False::
 supercalifragilisticoespialidoso⇒ rapido: True
 sfrsagilisticoesidoso⇒ rapido: False
 '''
-cadena="supercalifragilisticoespialidoso"
-buscar=input("Introduce la palabra a buscar: ")
+def existe_palabra(texto, palabra):
+    num_palabra = 0  
 
+    for letra in texto:
+        if num_palabra < len(palabra) and letra == palabra[num_palabra]:
+            num_palabra += 1  
+
+
+    return num_palabra== len(palabra)
 
  
+assert(existe_palabra("supercalifragilisticoespialidoso", "rapido"))
+assert(not existe_palabra("supercalifragilisticoespialidoso", "rapidoxx"))
+
+
+'''
+def buscar_y_reemplazar(frase, palabra_a_buscar, palabra_a_reemplazar):
+    palabras = frase.split()
+    
+    nueva_frase = ""
+    i = 0
+    for palabra in palabras:
+        if palabra == palabra_a_buscar:
+            palabra = palabra_a_reemplazar
+        
+        if i > 0:
+            nueva_frase += " "
+        
+        nueva_frase += palabra
+        
+        i += 1
+    
+    return nueva_frase
+
+ 
+frase = "Este es un ejemplo de prueba"
+palabra_a_buscar = "ejemplo"
+palabra_a_reemplazar = "muestra"
+
+nueva_frase = buscar_y_reemplazar(frase, palabra_a_buscar, palabra_a_reemplazar)
+print(nueva_frase)
+'''
+
