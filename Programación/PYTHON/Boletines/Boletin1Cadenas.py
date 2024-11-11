@@ -179,5 +179,22 @@ blanco. También al principio y al final de la frase puede haber blancos redunda
 ejemplo:
 a. “He estudiado mucho”, debe devolver 3.
 b. “Posiblemente”, debe devolver 1.
+
+def contar_palabras(cadena):
+    contador=0  
+    en_palabra=False 
+    for letra in cadena:
+        if letra != " " and not en_palabra:
+            contador+=1
+            en_palabra=True  
+        elif letra==" ":
+            en_palabra=False
+    
+    return contador
+
+assert contar_palabras("He estudiado mucho")==3 
+assert contar_palabras("Posiblemente")==1       
+assert contar_palabras("  Esto es   un  ejemplo  ")==4
 '''
+
 
