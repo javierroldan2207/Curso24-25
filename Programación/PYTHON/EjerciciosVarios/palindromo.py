@@ -26,7 +26,7 @@ def invertir(cadena):
     invertida=""
     for i in range(1,len(cadena)+1):
         invertida+=cadena[-i]
-    assert(invertir("hola")=="aloh")
+
 #Quitar espacios
 def quitar_espacios(cadena):
     filtrada=""
