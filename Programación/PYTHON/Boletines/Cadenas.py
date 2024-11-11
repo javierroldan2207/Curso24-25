@@ -69,7 +69,7 @@ buscar es “rapido”, entonces si se encontrará y deberá devolver True, en c
 deberá devolver False::
 supercalifragilisticoespialidoso⇒ rapido: True
 sfrsagilisticoesidoso⇒ rapido: False
-'''
+
 def existe_palabra(texto, palabra):
     num_palabra = 0  
 
@@ -83,33 +83,15 @@ def existe_palabra(texto, palabra):
  
 assert(existe_palabra("supercalifragilisticoespialidoso", "rapido"))
 assert(not existe_palabra("supercalifragilisticoespialidoso", "rapidoxx"))
+'''
+
 
 
 '''
-def buscar_y_reemplazar(frase, palabra_a_buscar, palabra_a_reemplazar):
-    palabras = frase.split()
-    
-    nueva_frase = ""
-    i = 0
-    for palabra in palabras:
-        if palabra == palabra_a_buscar:
-            palabra = palabra_a_reemplazar
-        
-        if i > 0:
-            nueva_frase += " "
-        
-        nueva_frase += palabra
-        
-        i += 1
-    
-    return nueva_frase
-
- 
-frase = "Este es un ejemplo de prueba"
-palabra_a_buscar = "ejemplo"
-palabra_a_reemplazar = "muestra"
-
-nueva_frase = buscar_y_reemplazar(frase, palabra_a_buscar, palabra_a_reemplazar)
-print(nueva_frase)
+7. Diseñar una función que reciba como parámetro tres cadenas, la primera será una frase
+y deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla
+por la tercera (similar a la función buscar y reemplazar de un editor de texto). No están
+permitidas funciones como replace.
 '''
+
 

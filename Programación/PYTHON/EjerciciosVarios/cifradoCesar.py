@@ -1,11 +1,31 @@
-abecedario="abcdefghijklmnñopqrstuvwxyz"
-caracter="e"
-desplazamiento=2
+def cifrar_caracter(caracter, desplazamiento):
+    cadena = "abcdefghijklmnñopqrstuvwxyz"  
+    n_caracter = cadena.index(caracter)
+    n_cifrado = (n_caracter + desplazamiento) % len(cadena) 
+    return cadena[n_cifrado]
 
-def cifrado_un_caracter(caracter,abecedario,desplazamiento):
-    for letra in abecedario:
-        if letra == caracter:
-            abecedario[+desplazamiento]
-    return caracter
+assert cifrar_caracter("d",3)=="g"
 
-print(cifrado_un_caracter(caracter,abecedario,desplazamiento))
+
+def cifrar_palabra(palabra,desplazamiento):
+    palabra_cifrada=""
+    for letra in palabra:
+        if letra in "abcdefghijklmnñopqrstuvwxyz":
+            palabra_cifrada+=cifrar_caracter(letra,desplazamiento)
+        else:
+            palabra_cifrada+=letra
+    return palabra_cifrada
+
+assert cifrar_palabra("casado", 3) == "fdvdgr"
+
+def comprovacion_cifrado(palabra1,palabra2,):
+    resultado="No son equivalentes"
+    for desplazamiento in range(0,27):
+        palabra_cifrada=cifrar_palabra(palabra1,desplazamiento)
+        if palabra_cifrada==palabra2:
+            resultado=f"Son equivalentes y el cifrado es {desplazamiento}."
+            
+    return resultado
+
+print(comprovacion_cifrado("casado","fdvdgr"))
+
