@@ -10,7 +10,6 @@ f. Mostrar todos los números.
 ⇒ Implementa el código de cada una de las opciones con funciones y sus
 correspondientes tests.
 ⇒ Utiliza la función randint para generar números aleatorios (entre 0 y 1000)
-'''
 
 
 import random  
@@ -58,7 +57,7 @@ def cambio_elemento(numeros,new_valor,posicion):
     return numeros
 
 numeros_aleatorios = generar_numeros_aleatorios(100, 0, 1000)
-menu='''
+menu='
 a. Conocer el mayor numero.
 b. Conocer el menor numero.
 c. Obtener la suma de todos los numeros.
@@ -66,8 +65,8 @@ d. Obtener la media.
 e. Sustituir el valor de un elemento por otro numero introducido por teclado.
 f. Mostrar todos los numeros.
 s. Salir.
-'''
-opcion = ""
+'
+opcion = " "
 while opcion != "s":
     print(menu)
     opcion=input("Seleccione la acion que desea realizar: ").lower()
@@ -91,7 +90,29 @@ while opcion != "s":
     else:
         print("Opción no válida. Intente de nuevo.")
 
-    
+'''
+#DUDAS EJERCICIO 2********
+'''
+2. Realiza un programa que reciba 10 números y devuelva otra lista con estos números
+desplazados una posición a la derecha, de tal forma que el último pase a la primera
+posición, el primero a la segunda, el segundo a la tercera, y así sucesivamente.
+Opcional: Añade un parámetro (D/I) a la función para que el controle el sentido del
+desplazamiento (a derechas/izquierdas) y otro que indique el número de posiciones
+a desplazar (0: quedaría igual, 1: desplaza una posición, etc.).
+
+lista_numeros=[]
+for i in range(0,10):
+    numeros=int(input("Introduce numero para añadir a la lista: "))
+    lista_numeros.append(numeros)
+
+print(lista_numeros)
+lista_movida=[lista_numeros[-1]] + [lista_numeros[:-1]]
+print(lista_movida)
+'''
 
 
 
+'''
+3. Diseña una función denominada es_primo que reciba un número y determine si el
+número es primo o no. Un número es primo si es divisible por 1 y el mismo número.
+'''
