@@ -99,17 +99,21 @@ posición, el primero a la segunda, el segundo a la tercera, y así sucesivament
 Opcional: Añade un parámetro (D/I) a la función para que el controle el sentido del
 desplazamiento (a derechas/izquierdas) y otro que indique el número de posiciones
 a desplazar (0: quedaría igual, 1: desplaza una posición, etc.).
-
-lista_numeros=[]
-for i in range(0,10):
-    numeros=int(input("Introduce numero para añadir a la lista: "))
-    lista_numeros.append(numeros)
-
-print(lista_numeros)
-lista_movida=[lista_numeros[-1]] + [lista_numeros[:-1]]
-print(lista_movida)
 '''
 
+numeros = []
+for i in range(10):
+    num = int(input(f"Ingrese el número {i+1}: "))
+    numeros.append(num)
+def desplazar_num(numeros):
+    desplazados = []
+    desplazados.append(numeros[-1])
+
+    for i in range(9):
+        desplazados.append(numeros[i])
+    return desplazados
+
+print(desplazar_num(numeros))
 
 
 '''
