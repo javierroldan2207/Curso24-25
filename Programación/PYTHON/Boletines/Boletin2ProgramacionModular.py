@@ -91,7 +91,7 @@ while opcion != "s":
         print("Opción no válida. Intente de nuevo.")
 
 '''
-#DUDAS EJERCICIO 2********
+
 '''
 2. Realiza un programa que reciba 10 números y devuelva otra lista con estos números
 desplazados una posición a la derecha, de tal forma que el último pase a la primera
@@ -99,7 +99,6 @@ posición, el primero a la segunda, el segundo a la tercera, y así sucesivament
 Opcional: Añade un parámetro (D/I) a la función para que el controle el sentido del
 desplazamiento (a derechas/izquierdas) y otro que indique el número de posiciones
 a desplazar (0: quedaría igual, 1: desplaza una posición, etc.).
-'''
 
 numeros = []
 for i in range(10):
@@ -115,8 +114,114 @@ def desplazar_num(numeros):
 
 print(desplazar_num(numeros))
 
+'''
 
 '''
 3. Diseña una función denominada es_primo que reciba un número y determine si el
 número es primo o no. Un número es primo si es divisible por 1 y el mismo número.
+
+def es_primo(num):
+    resultado = True
+    if num <= 1:
+        resultado=False
+    for i in range(2,num):
+        if num % i ==0:
+            resultado = False
+    return resultado
+
+assert(es_primo(2)==True)
+assert(es_primo(13)==True)
+assert(es_primo(15)==False)
+assert(es_primo(20)==False)
 '''
+
+'''
+4. Crea una función obtener_primos_menores que reciba un número y devuelva los
+números primos que son menores o iguales que el proporcionado como argumento.
+NO debes utilizar la función anterior es_primo, sino el algoritmo dado por la criba de
+Eratóstenes. Por ejemplo, si se proporciona el número 30, se devolverá: [2, 3, 5, 7,
+11, 13, 17, 19, 23, 29]
+
+def obtener_primos_menores(num):
+    lista_numeros = []
+    if num > 1:
+        for i in range(2,num):
+            if i % 2 != 0:
+                lista_numeros.append(i)
+        for n in lista_numeros:
+            if lista_numeros[1]**2 < 20:
+                if i % 2 != 0:
+                    lista_numeros.append(i)
+            
+    return lista_numeros
+print(obtener_primos_menores(30))
+'''
+
+'''
+5. Crea un programa que lea por teclado números de forma sucesiva y los guarde en
+una estructura de datos; el proceso de lectura y guardado finalizará cuando
+metamos un número negativo. En ese momento se mostrará el mayor elemento
+introducido y aquellos que son números primos.
+
+numeros=0
+lista_numeros=[]
+while numeros >=0:
+    numeros=int(input("Introduzca un numero: "))
+    lista_numeros.append(numeros)
+
+def mayor_numero(numeros):
+    mayor = numeros[0]
+    for n in numeros:
+        if n > mayor:
+            mayor = n
+ 
+    return mayor
+def es_primo(numeros):
+    lista=[]
+    for n in numeros:
+        resultado = True
+        if n <= 1:
+            resultado=False
+        for i in range(2,n):
+            if n % i ==0:
+                resultado = False
+        if resultado == True:
+            lista.append(n)       
+    return lista
+
+
+print("El mayor numero de la lista introducida es el: ",mayor_numero(lista_numeros))
+print("Los numeros primos de la lista son: ",es_primo(lista_numeros))
+'''
+
+'''
+6. Realiza una función reverse que reciba una lista de elementos y devuelva otra cuyo
+contenido sea igual a la original pero invertida.
+
+def reverse(lista):
+    lista_reversa=[]
+    for elemento in lista:
+        lista_reversa.insert(0,elemento)
+    return lista_reversa
+
+print(reverse(["hola","buenos","dias"]))
+'''
+   
+'''
+7. Diseña una función llamada esta_ordenada que reciba una lista de números y un
+parámetro (creciente, por defecto a True) y devuelva True si está ordenada o False
+en caso contrario.
+'''
+#DUDA
+def esta_ordenada(lista):
+    resultado = True
+    for i in range(len(lista)-1):
+        if resultado == True:
+            if lista[i] > lista[i+1]:  # Si está desordenada en orden creciente
+                resultado = False
+        else:
+            if lista[i] < lista[i+1]:  # Si está desordenada en orden decreciente
+                resultado = False
+    return True 
+
+print(esta_ordenada([1,2,4,5,7,6])) 
