@@ -129,10 +129,10 @@ def es_primo(num):
             resultado = False
     return resultado
 
-assert(es_primo(2)==True)
-assert(es_primo(13)==True)
-assert(es_primo(15)==False)
-assert(es_primo(20)==False)
+assert(es_primo(2))
+assert(es_primo(13))
+assert(not es_primo(15))
+assert(not es_primo(20))
 '''
 
 '''
@@ -211,17 +211,43 @@ print(reverse(["hola","buenos","dias"]))
 7. Diseña una función llamada esta_ordenada que reciba una lista de números y un
 parámetro (creciente, por defecto a True) y devuelva True si está ordenada o False
 en caso contrario.
-'''
-#DUDA
-def esta_ordenada(lista):
-    resultado = True
-    for i in range(len(lista)-1):
-        if resultado == True:
-            if lista[i] > lista[i+1]:  # Si está desordenada en orden creciente
-                resultado = False
-        else:
-            if lista[i] < lista[i+1]:  # Si está desordenada en orden decreciente
-                resultado = False
-    return True 
 
-print(esta_ordenada([1,2,4,5,7,6])) 
+def esta_ordenada(lista, orden="creciente"):
+    ordenada = True
+    i=0
+    while i > len(lista)-1 and ordenada:
+        if orden=="creciente" and lista[i]>lista[i+1]:
+            ordenada=False
+        elif orden=="decreciente" and lista[i]<lista[i+1]:
+            ordenada=False
+        i+=1
+
+    return ordenada
+
+print(esta_ordenada([1,2,4,5,6]))
+'''
+
+'''
+15. Escribe una función que, dada una lista de cadenas, devuelva la cadena más larga.
+Si dos o más cadenas miden lo mismo y son las más largas, la función devolverá la
+que tenga el mayor número de caracteres repetidos 
+'''
+def reduciir_palabra(palabra):
+    reducida=""
+
+    for letra in palabra:
+        if letra not in reducida:
+            reducida+=letra
+
+    return reducida
+
+def obtener_caracter_mas_repetido(palabra_1,palabra_2):
+    mas_repetida=palabra_1
+
+    if len(reduciir_palabra(palabra_2))<len(reduciir_palabra(palabra_1)):
+        mas_repetida=palabra_2
+
+    return mas_repetida
+
+
+
