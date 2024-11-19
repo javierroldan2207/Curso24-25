@@ -228,10 +228,24 @@ print(esta_ordenada([1,2,4,5,6]))
 '''
 
 '''
+8. Escribir una función denominada encajan que reciba dos fichas de dominó en
+formato [n,n], con 0 ≤ n ≤ 6, e indique si dos fichas de dominó encajan o no. Las
+fichas son recibidas en dos cadenas de texto con el siguiente formato
+[3,4] [2,5]
+'''
+
+
+
+
+
+
+
+
+'''
 15. Escribe una función que, dada una lista de cadenas, devuelva la cadena más larga.
 Si dos o más cadenas miden lo mismo y son las más largas, la función devolverá la
 que tenga el mayor número de caracteres repetidos 
-'''
+
 def reduciir_palabra(palabra):
     reducida=""
 
@@ -248,6 +262,8 @@ def obtener_caracter_mas_repetido(palabra_1,palabra_2):
         mas_repetida=palabra_2
 
     return mas_repetida
+
+'''
 
 
 
