@@ -115,7 +115,7 @@ assert busca_palabra("supercalifragilisticoespialidoso","agua")==False
 y deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla
 por la tercera (similar a la función buscar y reemplazar de un editor de texto). No están
 permitidas funciones como replace.
-'''
+
 def reemplazar(cadena,buscada,sustituta,num_reemplazo=1): 
     final,tem="",""
     i=0
@@ -140,6 +140,8 @@ assert(reemplazar("hola , mundo", "hola", "buenos dias")=="buenos dias , mundo")
 assert(reemplazar("mi imaginacion esta entre cero y menos dos","dos", "tres")=="mi imaginacion esta entre cero y menos tres")
 assert(reemplazar("cualquier frase vale", "frase", "enunciado")=="cualquier enunciado vale")
 assert(reemplazar("julio conoce a julio", "julio", "javier")=="javier conoce a julio")
+'''
+
 '''
 9. Diseñar una función que determine la cantidad de vocales diferentes, que tiene una
 palabra o frase introducida por teclado. Por ejemplo, la cadena “Abaco”, devolvería 2.
