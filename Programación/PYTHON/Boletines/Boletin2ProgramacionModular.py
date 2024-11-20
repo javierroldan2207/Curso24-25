@@ -234,11 +234,42 @@ fichas son recibidas en dos cadenas de texto con el siguiente formato
 [3,4] [2,5]
 '''
 
+'''
+12. Escribe una función intersect que reciba dos listas y devuelva otra lista con los
+elementos que son comunes a ambas, sin repetir ninguno. Las estructuras de datos
+originales no deben verse modificadas.
 
+def intersect(lista_1,lista_2):
+    lista_repetidos = []
+    for elemento in lista_1:
+        if elemento in lista_2 and elemento not in lista_repetidos:
+            lista_repetidos.append(elemento)
+    return lista_repetidos
 
+print(intersect(["p",2,5,"a","w"],[2,"w","a"]))
+'''
 
+'''
+13. Escribe una función union que reciba dos listas y devuelva los elementos que
+pertenecen a una, o bien, a la otra, pero sin repetir ninguno (unión de conjuntos).
+Las estructuras de datos originales no deben verse modificadas
 
+def union(lista_1,lista_2):
+    lista_final = []
 
+    for elemento in lista_1:
+        if elemento not in lista_final:
+            lista_final.append(elemento)
+
+    for elemento in lista_2:
+        if elemento not in lista_final:
+            lista_final.append(elemento)
+
+    return lista_final 
+
+print(union(["hola",1,4,4,"adios","hola"],["hola",2,97,"nombre"]))
+
+'''
 
 
 '''
@@ -259,11 +290,21 @@ def obtener_caracter_mas_repetido(palabra_1,palabra_2):
     mas_repetida=palabra_1
 
     if len(reduciir_palabra(palabra_2))<len(reduciir_palabra(palabra_1)):
-        mas_repetida=palabra_2
+        mas_repetida=palabra_1
+        if len(reduciir_palabra(palabra_2))<len(reduciir_palabra(palabra_1)):
+            mas_repetida=palabra_2
 
     return mas_repetida
 
+
+def obtener_mas_larga(palabras):
+    mas_larga=palabras[0]
+    for palabra in palabras:
+        if len(palabra) > len(mas_larga):
+            mas_larga = palabra
+        elif len(palabra) > len(mas_larga):
+            mas_larga = obtener_caracter_mas_repetido(palabra,mas_larga)
+    return mas_larga
+
+assert(obtener_mas_larga(["murcielago","holaa","jeus"]))
 '''
-
-
-
