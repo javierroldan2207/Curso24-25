@@ -232,6 +232,133 @@ print(esta_ordenada([1,2,4,5,6]))
 formato [n,n], con 0 ≤ n ≤ 6, e indique si dos fichas de dominó encajan o no. Las
 fichas son recibidas en dos cadenas de texto con el siguiente formato
 [3,4] [2,5]
+
+def encajan(ficha_1,ficha_2):
+    resultado = False
+    
+    if ficha_1[0] == ficha_2[0] or ficha_1[0] == ficha_2[1]:
+        resultado = True
+    elif ficha_1[1] == ficha_2[0] or ficha_1[1] == ficha_2[1]:
+        resultado = True
+    for num in ficha_1+ficha_2:
+        if num < 0 or num > 6:
+            resultado = False
+    return resultado
+
+assert(encajan([1,2],[2,1])==True)
+assert(encajan([2,2],[3,4])==False)
+assert(encajan([6,5],[3,6])==True)
+'''
+
+'''
+9. Elabora cuatro funciones que reciban una lista variable de números y devuelva una
+matriz de tres filas que contenga:
+a. primera fila: una lista con todos los que sean primos.
+b. segunda fila, primer valor: el sumatorio
+c. segunda fila, tercer valor: el promedio de los valores.
+d. tercera fila: una lista con el factorial de cada uno de los números
+
+def es_primo(num):
+    if num < 2:
+        resultado = False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            resultado = False
+    return resultado
+
+def obtener_primos(lista):
+    primos =[]
+    for num in lista:
+        if es_primo(num):
+            primos.append(num)
+    return primos
+
+def calcular_sumatorio(lista):
+    sumatorio = 0
+    for num in lista:
+        sumatorio += num
+    return sumatorio
+
+def calcular_promedio(lista):
+    if len(lista)== 0:
+        resultado= 0  
+    else:
+        resultado=calcular_sumatorio(lista)/len(lista)
+    return resultado
+
+def calcular_factoriales(lista):
+    factoriales= []
+    for num in lista:
+        factorial =1
+        for i in range(1, num + 1):
+            factorial *=i
+        factoriales.append(factorial)
+    return factoriales
+
+def procesar_lista(lista):
+    fila_1 = obtener_primos(lista)
+    
+    sumatorio = calcular_sumatorio(lista)
+    promedio = calcular_promedio(lista)
+    fila_2 = [sumatorio, promedio]  # El segundo valor de la segunda fila es irrelevante (None)
+
+    fila_3 = calcular_factoriales(lista)
+    
+    return [fila_1, fila_2, fila_3]
+
+lista = [2, 3, 4, 5, 6]
+matriz = procesar_lista(lista)
+print(matriz)
+'''
+
+'''
+10. Desarrolla un programa que a partir de una lista de números y un entero k, realice la
+llamada a tres funciones:
+a. para devolver una lista de números con los menores de k
+b. otra con los mayores
+c. otra con aquellos que son múltiplos de k
+
+def menores(lista,k):
+    lista_menores = []
+    for i in lista:
+        if i < k:
+            lista_menores.append(i)
+    return lista_menores
+
+def mayores(lista,k):
+    lista_mayores = []
+    for i in lista:
+        if i > k:
+            lista_mayores.append(i)
+    return lista_mayores
+
+def multiplos(lista,k):
+    lista_multiplos = []
+    for i in lista:
+        if i % k == 0:
+            lista_multiplos.append(i)
+    return lista_multiplos
+
+MENU='''
+Lista de números con los menores de k
+Lista mayores que k 
+Lista múltiplos de k
+'''
+
+i=0
+veces = int(input("Introduce cantidad de nmeros que desea introducir: "))
+lista = []
+while i < veces:
+    numeros=int(input("Introduce numero para añadir a la lista: "))
+    lista.append(numeros)
+    i+=1
+
+print(MENU)
+numero = int(input("introduce el numero k para comparar con las opciones: "))
+
+print(menores(lista,numero))
+print(mayores(lista,numero))
+print(multiplos(lista,numero))
 '''
 
 '''
