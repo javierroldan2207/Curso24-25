@@ -4,7 +4,6 @@ def numeros_triangulares(num):
     for i in range(1,num+1):
         suma+=i
         resultado.append(suma)
-        
     return resultado
 
 assert(numeros_triangulares(7)==[1, 3, 6, 10, 15, 21, 28])
