@@ -25,6 +25,7 @@ public class Principal {
 		}else {
 			System.out.println("No eres mayor de edad.");
 		}
+		scanner.close();
 	}
 
 }

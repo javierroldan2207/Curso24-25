@@ -27,6 +27,7 @@ public class DiasSemana {
 		}else {
 			System.out.println("Numero erroneo.");
 		}
+		scanner.close();
 	}
 
 }
