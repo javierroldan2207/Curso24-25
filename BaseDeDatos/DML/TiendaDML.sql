@@ -114,22 +114,68 @@ INCREMENT BY 1;
 INSERT INTO PRODUCTO
 VALUES (SQN_PRODUCTO.NEXTVAL,'Camara Sony',550.25,10)
 
---5 Elimina el fabricante Asus. ¿Es posible eliminarlo? Si no fuese posible,
---¿qué cambios debería realizar para que fuese posible borrarlo?
+/*5 Elimina el fabricante Asus. ¿Es posible eliminarlo? Si no fuese posible,
+¿qué cambios debería realizar para que fuese posible borrarlo?
 
-DELETE FROM FABRICANTE
-WHERE NOMBRE LIKE 'Asus';
+No se puede borrar desde la tabla fabricante ya que en la tabla producto hay un producto con la clave forane de fabricante, 
+deberiamos borrar la clave de producto y seguido a esto la de fabricante, o podriamos haber creado la clave foranea 
+con borrado en cascada.  */
+
 
 --6 Elimina el fabricante Xiaomi. ¿Es posible eliminarlo? Si no fuese posible,
 --¿qué cambios debería realizar para que fuese posible borrarlo?
 
-DELETE FROM FABRICANTE
-WHERE NOMBRE LIKE 'Xiaomi';
+DELETE FROM FABRICANTE WHERE NOMBRE = 'Xiaomi';
+
+
+--7 Actualiza el código del fabricante Lenovo y asígnale el valor 20. ¿Es
+--posible actualizarlo? Si no fuese posible, ¿qué cambios debería realizar
+--para que fuese actualizarlo?
+
+/* Tendriamos que actualizar tambien el codigo en la tabla producto para que no nos salte un error 
+ de la clave foranea en la tabla producto. */
+
+ALTER TABLE PRODUCTO DROP CONSTRAINT FK_PRODUCTO;
+
+UPDATE FABRICANTE SET CODIGO = 20 WHERE CODIGO = 2;
+
+UPDATE PRODUCTO SET CODIGO_FABRICANTE = 20 WHERE CODIGO_FABRICANTE = 2;
+
+ALTER TABLE PRODUCTO ADD CONSTRAINT FK_PRODUCTO FOREIGN KEY (CODIGO_FABRICANTE) REFERENCES FABRICANTE(CODIGO);
 
 
 SELECT * FROM PRODUCTO;
 
 SELECT * FROM FABRICANTE;
+
+
+--8 Actualiza el código del fabricante Huawei y asígnale el valor 30. ¿Es
+--posible actualizarlo? Si no fuese posible, ¿qué cambios debería realizar
+--para que fuese actualizarlo?
+
+UPDATE FABRICANTE SET CODIGO = 30 WHERE CODIGO = 8;
+
+
+--9 Actualiza el precio de todos los productos sumándole 5 € al precio
+--actual.
+
+
+UPDATE PRODUCTO SET PRECIO =PRECIO+5 WHERE PRECIO IS NOT NULL;
+
+DELETE FROM PRODUCTO WHERE NOMBRE LIKE 'Impresora%';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
