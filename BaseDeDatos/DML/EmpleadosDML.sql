@@ -114,6 +114,91 @@ VALUES (SQN_DEPARTAMENTO.NEXTVAL,'Seguridad',50000,25000);
 SELECT * FROM DEPARTAMENTO;
 
 
+--4 Inserta un nuevo empleado asociado a uno de los nuevos
+--departamentos. La sentencia de inserción debe
+--incluir: código, nif, nombre, apellido1, apellido2 y codigo_departamento.
+
+INSERT INTO EMPLEADO 
+VALUES (14,'47389854N','Antonio','Rodriguez','Gomez',10);
+
+--5 Inserta un nuevo empleado asociado a uno de los nuevos
+--departamentos. La sentencia de inserción debe
+--incluir: nif, nombre, apellido1, apellido2 y codigo_departamento.
+
+CREATE SEQUENCE SQN_EMPLEADO
+START WITH 15
+INCREMENT BY 1;
+
+INSERT INTO EMPLEADO 
+VALUES (SQN_EMPLEADO.NEXTVAL,'2343212M','Roberto','Sevillano','Ruda',4);
+
+
+--6 Crea una nueva tabla con el nombre departamento_backup que tenga las
+--mismas columnas que la tabla departamento. Una vez creada copia todos
+--las filas de tabla departamento en departamento_backup.
+
+CREATE TABLE DEPARTAMENTO_BACKUP AS
+SELECT *
+FROM DEPARTAMENTO;
+
+--7 Elimina el departamento Proyectos. ¿Es posible eliminarlo? Si no fuese
+--posible, ¿qué cambios debería realizar para que fuese posible borrarlo?
+
+DELETE FROM  DEPARTAMENTO
+WHERE NOMBRE LIKE 'Proyectos';
+
+
+--8 Elimina el departamento Desarrollo. ¿Es posible eliminarlo? Si no fuese
+--posible, ¿qué cambios debería realizar para que fuese posible borrarlo?
+
+DELETE FROM DEPARTAMENTO 
+WHERE NOMBRE LIKE 'Desarrollo';
+
+
+/* No es posible borrar el departamento ya que tiene asociado empleados, deberiamos borrar antes los empleados asociados 
+a dicho departamento y despues borrar el departamento */
+
+
+--9 Actualiza el código del departamento Recursos Humanos y asígnale el valor
+--30. ¿Es posible actualizarlo? Si no fuese posible, ¿qué cambios debería
+--realizar para que fuese actualizarlo?
+
+
+UPDATE DEPARTAMENTO 
+SET CODIGO = 30
+WHERE NOMBRE = 'Recursos Humanos';
+
+/* No se puede actualizar el codigo del departamento ya que en ese departamento esta empleados con el codigo que queremos modificar,
+primero debemos modificar el codigo en los empleados para poder corregirlos en la tabla departamento sin que nos de error*/
+
+
+--10 .Actualiza el código del departamento Publicidad y asígnale el valor 40.
+--¿Es posible actualizarlo? Si no fuese posible, ¿qué cambios debería
+--realizar para que fuese actualizarlo?
+
+UPDATE DEPARTAMENTO 
+SET CODIGO = 40
+WHERE NOMBRE = 'Publicidad';
+
+
+--11 Actualiza el presupuesto de los departamentos sumándole 50000 € al
+--valor del presupuesto actual, solamente a aquellos departamentos que
+--tienen un presupuesto menor que 20000 €
+
+UPDATE DEPARTAMENTO 
+SET PRESUPUESTO = PRESUPUESTO + 50000
+WHERE PRESUPUESTO < 20000;
+
+
+--12 Realiza una transacción que elimine todas los empleados que no tienen
+--un departamento asociado.
+
+DELETE FROM EMPLEADO 
+WHERE CODIGO_DEPARTAMENTO IS NULL ;
+
+
+
+
 
 
 
