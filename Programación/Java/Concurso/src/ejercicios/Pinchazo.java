@@ -30,5 +30,4 @@ public class Pinchazo {
 		}
 		return resultado;
 	}
-
 }
