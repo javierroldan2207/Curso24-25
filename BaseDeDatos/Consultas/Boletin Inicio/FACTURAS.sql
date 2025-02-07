@@ -48,7 +48,8 @@ SELECT C.NOMBRE , C.DIRECCION  FROM CLIENTES c ;
 
      
 --11. Mostrar los distintos códigos de pueblos en donde tenemos clientes.
-SELECT P.CODPUE CodigoPueblos FROM PUEBLOS p ,CLIENTES c  
+SELECT DISTINCT P.CODPUE CodigoPueblos 
+FROM PUEBLOS p ,CLIENTES c  
 WHERE C.NOMBRE IS NOT NULL;
 
 --12. Obtener los códigos de los pueblos en donde hay clientes con código de cliente menor que el código 25. No deben salir códigos repetidos.
@@ -87,8 +88,8 @@ AND EXTRACT(MONTH FROM F.FECHA) = 06
 AND C.CODCLI  BETWEEN 100 AND 250;
 
 --19. Código y fecha de las facturas para los clientes cuyos códigos están entre 90 y 100 y no tienen iva. NOTA: una factura no tiene iva cuando éste es cero o nulo.
-SELECT F.CODFAC , F.FECHA FROM FACTURAS f , CLIENTES c  
-WHERE C.CODCLI BETWEEN 90 AND 100
+SELECT F.CODFAC , F.FECHA FROM FACTURAS f  
+WHERE F.CODCLI BETWEEN 90 AND 100
 AND NVL(F.IVA,0)=0;
 
 --20. Nombre de las provincias que terminan con la letra 's' (bien mayúscula o minúscula).
@@ -112,9 +113,11 @@ WHERE UPPER(P.NOMBRE) LIKE '%MA%';
 --Si el artículo es de más de 6000 € y el stock supera los 60000 €, se hará un descuento del 10%. 
 --Mostrar un listado de los artículos que van a entrar en la promoción, con su código de artículo, 
 --nombre del articulo, precio actual y su precio en la promoción.
-SELECT A.DESCRIP Articulo, A.PRECIO PrecioActual, a.PRECIO * 0.90 PrecioPromocion FROM ARTICULOS a  
+SELECT A.DESCRIP Articulo, A.PRECIO PrecioActual, a.PRECIO * 0.90 PrecioPromocion 
+FROM ARTICULOS a  
 WHERE A.PRECIO > 6000
 AND A.STOCK * A.PRECIO > 60000;
+
 
 /*EJEMPLO:
 SELECT c.NOMBRE nombrecliente,p.NOMBRE nombrepueblo , pro.NOMBRE  nombreprovincia 
