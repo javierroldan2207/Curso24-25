@@ -2,11 +2,11 @@ package coffeeBreak;
 
 import java.time.LocalDate;
 
-public class MaquinaCafe {
+public class MaquinaCafe implements Comparable<MaquinaCafe>{
 	
 	private String id;
 	private static int contador =0;
-	private double cafe;
+	private double cafe; 
 	private double leche;
 	private double chocolate;
 	private int cafesServidos;
@@ -108,14 +108,13 @@ public class MaquinaCafe {
 		;
 	}
 	
-	public boolean compararMaquinas() {
-		if (this.id.equals(this.id)) {
-			return true;
-		}
-		return false;
+	public int compareTo(MaquinaCafe otra) {
+		return (int) (this.importe - otra.importe);
 	}
 
 }
+
+
 
 
 

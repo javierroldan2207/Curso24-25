@@ -1,12 +1,14 @@
 package coffeeBreak;
 
-
 public class Main {
 
 	public static void main(String[] args) {
 		
 		MaquinaCafe m1 = new MaquinaCafe(null, 0, 0, 0, 0, 0, 0, 0, null);
 		MaquinaCafe m2 = new MaquinaCafe(null, 0, 0, 0, 0, 0, 0, 0, null);
+		
+		MaquinaCafe [] maquinas = new MaquinaCafe[2];
+		
 		
 		m1.encender();
 		m1.servirCafe();
@@ -15,6 +17,7 @@ public class Main {
 		m1.mostrarVentas();
 		m1.mostrarInformacion();
 		m1.apagar();
+		
 		System.out.println("************************");
 		m2.encender();
 		m2.servirCafe();
@@ -23,7 +26,8 @@ public class Main {
 		m2.servirChocolate();
 		m2.mostrarInformacion();
 		m2.apagar();
-	
+		
+		
 	}
 
 }
