@@ -86,6 +86,9 @@ FROM PERSONA p
 WHERE P.TELEFONO LIKE '91%';
 
 --18. Mostrar el nombre de las asignaturas que contengan la sílaba “pro”.
+SELECT  A.NOMBRE 
+FROM ASIGNATURA a
+WHERE UPPER(A.NOMBRE) LIKE '%PRO%';
 
 --19. Mostrar el nombre de la asignatura de primero y que lo imparta el profesor que tiene código P101
 

@@ -61,29 +61,36 @@ AND LF.CANT > 10;
 --6.Mostrar la fecha de factura junto con el código del artículo y la cantidad vendida por cada artículo vendido en alguna factura. 
 --Los datos deben salir ordenado por fecha, primero las más reciente, luego por el código del artículos, 
 --y si el mismo artículo se ha vendido varias veces en la misma fecha los más vendidos primero.
-SELECT F.FECHA,LF.CODART, LF.CANT 
-FROM FACTURAS f ,LINEAS_FAC lf 
+SELECT F.FECHA,LF.CODART, LF.CANT , C.NOMBRE 
+FROM FACTURAS f ,LINEAS_FAC lf , CLIENTES c 
 WHERE F.CODFAC = LF.CODFAC
+AND F.CODCLI = C.CODCLI 
 ORDER BY F.FECHA DESC, LF.CODART ASC, LF.CANT DESC;
 
-SELECT F.FECHA , LF.CODART , LF.CANT 
+SELECT F.FECHA , LF.CODART , LF.CANT ,C.NOMBRE 
 FROM FACTURAS f 
 INNER JOIN LINEAS_FAC lf 
 ON F.CODFAC = LF.CODFAC 
+INNER JOIN CLIENTES c 
+ON F.CODCLI = C.CODCLI 
 ORDER BY F.FECHA DESC, LF.CODART ASC, LF.CANT DESC;
 
 --7.Mostrar el código de factura y la fecha de las mismas de las facturas que se han facturado a un cliente 
 --que tenga en su código postal un 7.
-SELECT F.CODFAC ,F.FECHA 
+SELECT DISTINCT F.CODFAC ,F.FECHA 
 FROM FACTURAS f , CLIENTES c 
 WHERE F.CODCLI = C.CODCLI 
-AND C.CODPOSTAL LIKE '%7%';
+AND C.CODPOSTAL LIKE '%7%'
+OR C.CODPOSTAL LIKE '%7'
+OR C.CODPOSTAL LIKE '7%';
 
-SELECT F.CODFAC , F.FECHA 
+SELECT DISTINCT F.CODFAC , F.FECHA 
 FROM FACTURAS f 
 INNER JOIN CLIENTES c 
 ON F.CODCLI = C.CODCLI 
-WHERE C.CODPOSTAL LIKE '%7%';
+WHERE C.CODPOSTAL LIKE '%7%'
+OR C.CODPOSTAL LIKE '%7'
+OR C.CODPOSTAL LIKE '7%';
 --8.Mostrar el código de factura, la fecha y el nombre del cliente de todas las facturas existentes en la base de datos.
 SELECT F.CODFAC ,F.FECHA , C.NOMBRE Cliente
 FROM FACTURAS f , CLIENTES c 
@@ -100,13 +107,15 @@ ON F.CODCLI = C.CODCLI;
 SELECT F.CODFAC , F.FECHA , F.IVA , F.DTO Descuento , C.NOMBRE Cliente
 FROM FACTURAS f ,CLIENTES c 
 WHERE F.CODCLI = C.CODCLI 
-AND NVL(F.IVA,0) > 0;
+AND (NVL(F.IVA,0) = 0
+OR NVL(F.DTO ,0) = 0);
 
 SELECT F.CODFAC , F.FECHA , F.IVA , F.DTO Descuento , C.NOMBRE Cliente
 FROM FACTURAS f 
 INNER JOIN CLIENTES c 
 ON F.CODCLI = C.CODCLI 
-WHERE NVL(F.IVA,0) > 0;
+WHERE NVL(F.IVA,0) = 0
+OR NVL(F.DTO ,0) = 0;
 --10.Se quiere saber que artículos se han vendido más baratos que el precio que actualmente tenemos almacenados 
 --en la tabla de artículos, para ello se necesita mostrar la descripción de los artículos junto con el precio actual. 
 --Además deberá aparecer el precio en que se vendió si este precio es inferior al precio original.
@@ -150,7 +159,7 @@ SELECT C.NOMBRE Clientes
 FROM CLIENTES c ,PUEBLOS p ,PROVINCIAS pr
 WHERE C.CODPUE = P.CODPUE 
 AND P.CODPRO = PR.CODPRO 
-AND UPPER(PR.NOMBRE) LIKE '%M%';
+AND UPPER(PR.NOMBRE) LIKE '%MA%';
 
 SELECT C.NOMBRE 
 FROM CLIENTES c 
@@ -158,7 +167,7 @@ INNER JOIN PUEBLOS p
 ON C.CODPUE = P.CODPUE 
 INNER JOIN PROVINCIAS pr
 ON P.CODPRO = PR.CODPRO 
-WHERE LOWER(PR.NOMBRE) LIKE '%m%';
+WHERE LOWER(PR.NOMBRE) LIKE '%ma%';
 
 --14.Mostrar el código del cliente al que se le ha vendido un artículo que tienen un stock menor al stock mínimo.
 SELECT C.CODCLI 
@@ -238,8 +247,8 @@ SELECT DISTINCT C.NOMBRE CLIENTE
 FROM CLIENTES c ,FACTURAS f ,LINEAS_FAC lf 
 WHERE C.CODCLI = F.CODCLI 
 AND F.CODFAC = LF.CODFAC 
-AND F.DTO > 10
-AND LF.DTO  > 10;
+AND (F.DTO > 10
+OR LF.DTO  > 10);
 
 SELECT DISTINCT C.NOMBRE CLIENTE
 FROM CLIENTES c 
@@ -247,8 +256,8 @@ INNER JOIN FACTURAS f
 ON C.CODCLI = F.CODCLI 
 INNER JOIN LINEAS_FAC lf 
 ON F.CODFAC = LF.CODFAC 
-WHERE F.DTO > 10
-AND LF.DTO > 10;
+WHERE (F.DTO > 10
+OR LF.DTO > 10);
 
 --20.Mostrar la descripción, la cantidad y el precio de venta de los artículos vendidos al cliente con nombre MARIA MERCEDES
 SELECT A.DESCRIP ,A.STOCK ,A.PRECIO 
