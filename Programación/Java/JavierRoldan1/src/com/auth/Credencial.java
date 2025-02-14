@@ -7,20 +7,39 @@ public class Credencial {
 	private static int secuencia = 0;
 	
 	
+
 	
-	public Credencial(String usurname, String password, int secuencia) {
+	public Credencial(String nombre, String apellidos, String password) {
 		super();
-		this.usurname = usurname;
 		this.password = password;
-		
+		this.generarUsername(nombre, apellidos);
 	}
-	
+
+
 	public String getUsurname() {
 		return usurname;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public boolean esPasswordSegura() {
+		boolean estado = false;
+		boolean tieneMayus = false;
+		boolean tieneNum = false;
+		if(password.length()>8) {
+		for(int i = 0;i<password.length(); i++) {
+			if(Character.isDigit(password.charAt(i))) {
+				tieneNum = true;
+			}
+			else if(Character.isUpperCase(password.charAt(i))) {
+				tieneMayus = true;
+			}
+		}
+			
+	}
+	
+		return tieneMayus && tieneNum;
 	}
 	
 	public String generarUsername(String nombre, String apellido) {
@@ -29,6 +48,10 @@ public class Credencial {
 		return parteNombre + parteApellido + (secuencia++);
 	}
 	
-	
+	public boolean comprobarPassword(String otra) {
+		return this.password.equals(otra) ;
+	}
+
 
 }
+

@@ -256,7 +256,7 @@ INNER JOIN FACTURAS f
 ON C.CODCLI = F.CODCLI 
 INNER JOIN LINEAS_FAC lf 
 ON F.CODFAC = LF.CODFAC 
-WHERE (F.DTO > 10
+WHERE (8F.DTO > 10
 OR LF.DTO > 10);
 
 --20.Mostrar la descripción, la cantidad y el precio de venta de los artículos vendidos al cliente con nombre MARIA MERCEDES

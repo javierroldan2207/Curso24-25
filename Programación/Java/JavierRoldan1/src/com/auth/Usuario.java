@@ -7,13 +7,20 @@ public class Usuario {
 	private int intentos;
 	private Credencial credencial;
 	
-	public Usuario(String nombre, String apellidos, String email, int intentos, Credencial credencial) {
+	public Usuario(String nombre, String apellidos,String password) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.email = "";
-		this.intentos = 0;
+		this.credencial = new Credencial(nombre, apellidos, password);
+		
 	}
+	
+	public Usuario(String nombre, String apellidos,String email, String password) {
+		this(nombre,apellidos,password);
+		this.email=email;
+	}
+	
+
 
 	public void setCredencial(Credencial credencial) {
 		this.credencial = credencial;
@@ -26,9 +33,27 @@ public class Usuario {
 		return false;
 	}
 	
-	public boolean esPasswordSegura(String password) {
+	public boolean esPasswordSegura() {
 		
-		return false;
+		return this.credencial.esPasswordSegura();
 	}
 	
+	public boolean modificarPassword(String newpass, String oldpass, String newpassverif) {
+		boolean resultado = false;
+		if(this.credencial.comprobarPassword(oldpass) && newpass.equals(newpassverif) && !oldpass.equals(newpass)) {
+			resultado = true;
+			this.credencial.setPassword(newpassverif);	
+		}
+		return resultado;
+	}
+	
+	public boolean hacerLogin(String nombre, String password) {
+		if(this.credencial.getUsurname().equals(nombre) && this.credencial.comprobarPassword(password)) {
+			
+		}
+		return true;
+	}
 }
+
+
+
