@@ -91,26 +91,102 @@ FROM ASIGNATURA a
 WHERE UPPER(A.NOMBRE) LIKE '%PRO%';
 
 --19. Mostrar el nombre de la asignatura de primero y que lo imparta el profesor que tiene código P101
+SELECT  A.NOMBRE 
+FROM ASIGNATURA a , PROFESOR p 
+WHERE P.IDPROFESOR = A.IDPROFESOR 
+AND P.IDPROFESOR = 'P101';
+
+SELECT A.NOMBRE
+FROM ASIGNATURA a 
+INNER JOIN PROFESOR p 
+ON P.IDPROFESOR = A.IDPROFESOR 
+WHERE P.IDPROFESOR = 'P101';
 
 --20. Mostrar el código de alumno que se ha matriculado tres o más veces de una asignatura, mostrando también el código de la asignatura correspondiente.
+SELECT A.IDALUMNO , A.IDASIGNATURA 
+FROM ALUMNO_ASIGNATURA a 
+WHERE A.NUMEROMATRICULA >= 3;
 
+/*21.El coste de cada asignatura va subiendo a medida que se repite la asignatura. 
+Para saber cuál sería el precio de las distintas asignaturas en las repeticiones 
+(y así animar a nuestros alumnos a que estudien) se quiere mostrar un listado en donde esté el nombre de la asignatura, 
+el precio básico, el precio de la primera repetición (un 10 por ciento más que el coste básico),  
+el precio de la segunda repetición (un 30 por ciento más que el coste básico) y el precio de la tercer repetición 
+(un 60 por ciento más que el coste básico).*/
+SELECT A.NOMBRE  NOMBRE_ASIGNATURA, 
+A.COSTEBASICO  PRECIO_BASICO,
+A.COSTEBASICO * 1.10  PRECIO_PRIMERA_REPETICION,
+A.COSTEBASICO * 1.30  PRECIO_SEGUNDA_REPETICION,
+A.COSTEBASICO * 1.60  PRECIO_TERCERA_REPETICION
+FROM ASIGNATURA a ;
 
+--22.Mostrar todos los datos de las personas que tenemos en la base de datos que han nacido antes de la década de los 70.
+SELECT * 
+FROM PERSONA p 
+WHERE P.FECHA_NACIMIENTO < TO_DATE('1970-01-01','YYYY,MM,DD');
 
+--23.Mostrar el identificador de las personas que trabajan como profesor, sin que salgan valores repetidos.
+SELECT  DISTINCT P.DNI
+FROM PERSONA p , PROFESOR pp
+WHERE P.DNI = PP.DNI ;
 
+SELECT DISTINCT P.DNI 
+FROM PERSONA p 
+INNER JOIN PROFESOR pP 
+ON P.DNI = PP.DNI;
 
+--24.Mostrar el identificador de los alumnos que se encuentran matriculados en la asignatura con código 130122.
+SELECT A.DNI 
+FROM ALUMNO a, ALUMNO_ASIGNATURA aa 
+WHERE A.IDALUMNO = AA.IDALUMNO 
+AND AA.IDASIGNATURA = '130122';
 
+SELECT A.DNI
+FROM ALUMNO a 
+INNER JOIN ALUMNO_ASIGNATURA aa 
+ON A.IDALUMNO = AA.IDALUMNO 
+WHERE AA.IDASIGNATURA = '130122';
 
+--25.Mostrar los códigos de las asignaturas en las que se encuentra matriculado algún alumno, sin que salgan códigos repetidos.
+SELECT DISTINCT AA.IDASIGNATURA 
+FROM ALUMNO_ASIGNATURA AA 
+WHERE AA.IDASIGNATURA IS NOT NULL;
 
+SELECT DISTINCT A.IDASIGNATURA
+FROM ASIGNATURA A 
+INNER JOIN ALUMNO_ASIGNATURA AA 
+ON A.IDASIGNATURA = AA.IDASIGNATURA;
 
+--26.Mostrar el nombre de las asignaturas que tienen más de 4 créditos, 
+--y además, o se imparten en el primer cuatrimestre o son del primer curso.
+SELECT A.NOMBRE 
+FROM ASIGNATURA A 
+WHERE A.CREDITOS > 4 
+AND (A.CUATRIMESTRE = 1 OR A.CURSO = 1);
 
+SELECT A.NOMBRE
+FROM ASIGNATURA A 
+INNER JOIN TITULACION T 
+ON A.IDTITULACION = T.IDTITULACION
+WHERE A.CREDITOS > 4 
+AND (A.CUATRIMESTRE = 1 OR A.CURSO = 1);
 
+--27.Mostrar los distintos códigos de las titulaciones en las que hay alguna asignatura en nuestra base de datos.
+SELECT DISTINCT A.IDTITULACION 
+FROM ASIGNATURA
 
+--28.Mostrar el dni de las personas cuyo apellido contiene la letra g en mayúsculas o minúsculas.
+SELECT P.DNI 
+FROM PERSONA P 
+WHERE LOWER(P.APELLIDO) LIKE '%g%';
 
-
-
-
-
-
+--29.Mostrar las personas varones que tenemos en la base de datos que han nacido con posterioridad 
+--a 1970 y que vivan en una ciudad que empieza por M.
+SELECT P.DNI, P.NOMBRE, P.APELLIDO 
+FROM PERSONA P 
+WHERE P.VARON = 1 
+AND P.FECHA_NACIMIENTO > TO_DATE('01/01/1970', 'DD/MM/YYYY') 
+AND P.CIUDAD LIKE 'M%';
 
 
 
