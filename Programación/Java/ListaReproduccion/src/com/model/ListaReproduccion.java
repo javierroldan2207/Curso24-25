@@ -57,6 +57,40 @@ public class ListaReproduccion {
 		}
 		this.numeroReproducciones +=1;
 	}
+	
+	public String buscarPorArtista(String artista) {
+		Cancion[] resultado = new Cancion[100];
+		int contador = 0;
+		for (Cancion cancion : canciones) {
+			if (cancion != null && cancion.getArtista().equals(artista)) {
+				resultado[contador] = cancion;
+				contador++;
+			}
+		}
+		return Arrays.toString(resultado);
+		
+	}
+	public String ordenDeReproduccion(int num) {
+		Cancion[] resultado = new Cancion[this.canciones.length];
+		int contador = 0;
+		
+		if (num == 1) {
+			for (Cancion cancion : canciones) {
+				resultado[contador]= cancion;
+				contador++;
+			}
+		}
+		
+		if (num == 2) {
+			int contador = 0;
+			for (Cancion cancion : canciones) {
+				return canciones[contador] > canciones[contador+1] ? 
+				
+			}
+		}
+		return Arrays.toString(resultado);
+	}
+	
 
 }
 

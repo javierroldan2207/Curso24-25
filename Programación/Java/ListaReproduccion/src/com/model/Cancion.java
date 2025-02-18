@@ -24,7 +24,16 @@ public class Cancion {
 		return "Cancion [titulo=" + titulo + ", artista=" + artista + ", duracion=" + duracion + ", disco=" + disco
 				+ ", anio=" + anio + ", numeroReproduccion=" + numeroReproduccion + "]";
 	}
+
+	public String getArtista() {
+		return artista;
+	}
+
+	public int getNumeroReproduccion() {
+		return numeroReproduccion;
+	}
 	
 	
 
+	
 }
