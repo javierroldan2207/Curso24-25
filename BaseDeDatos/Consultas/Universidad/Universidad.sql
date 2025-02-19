@@ -113,12 +113,15 @@ Para saber cuál sería el precio de las distintas asignaturas en las repeticion
 el precio básico, el precio de la primera repetición (un 10 por ciento más que el coste básico),  
 el precio de la segunda repetición (un 30 por ciento más que el coste básico) y el precio de la tercer repetición 
 (un 60 por ciento más que el coste básico).*/
-SELECT A.NOMBRE  NOMBRE_ASIGNATURA, 
-A.COSTEBASICO  PRECIO_BASICO,
-A.COSTEBASICO * 1.10  PRECIO_PRIMERA_REPETICION,
-A.COSTEBASICO * 1.30  PRECIO_SEGUNDA_REPETICION,
-A.COSTEBASICO * 1.60  PRECIO_TERCERA_REPETICION
-FROM ASIGNATURA a ;
+SELECT a.NOMBRE,a.COSTEBASICO,aa.NUMEROMATRICULA,
+decode(aa.NUMEROMATRICULA,
+	1,a.COSTEBASICO +(a.costebasico*0.1),
+	2,a.COSTEBASICO +(a.costebasico*0.3),
+	3,a.COSTEBASICO +(a.costebasico*0.6)
+	)AS PRECIOREPETICION
+FROM ASIGNATURA a 
+JOIN ALUMNO_ASIGNATURA aa ON a.IDASIGNATURA = aa.IDASIGNATURA;
+
 
 --22.Mostrar todos los datos de las personas que tenemos en la base de datos que han nacido antes de la década de los 70.
 SELECT * 
@@ -172,8 +175,8 @@ WHERE A.CREDITOS > 4
 AND (A.CUATRIMESTRE = 1 OR A.CURSO = 1);
 
 --27.Mostrar los distintos códigos de las titulaciones en las que hay alguna asignatura en nuestra base de datos.
-SELECT DISTINCT A.IDTITULACION 
-FROM ASIGNATURA
+SELECT DISTINCT NVL(A.IDTITULACION, 0) AS CodTitulacion
+FROM ASIGNATURA a;
 
 --28.Mostrar el dni de las personas cuyo apellido contiene la letra g en mayúsculas o minúsculas.
 SELECT P.DNI 
