@@ -6,6 +6,7 @@ FROM ARTICULOS a ;
 --7.Número de pueblos en los que residen clientes cuyo código postal empieza por ‘12’.
 SELECT COUNT(DISTINCT C.CODPUE )
 FROM CLIENTES c 
+JOIN PUEBLOS p ON C.CODPUE =P.CODPUE
 WHERE C.CODPUE LIKE '12%';
 
 --8.Valores máximo y mínimo del stock de los artículos cuyo precio oscila entre 9 y 12 € y diferencia entre ambos valores
@@ -34,12 +35,12 @@ FROM LINEAS_FAC lf
 WHERE LF.DTO IS NULL;
 
 --13.Obtener cuántas facturas tiene cada cliente.
-SELECT CODCLI, COUNT(*)  NUMERO_FACTURAS  
+SELECT COUNT(*)  NUMERO_FACTURAS  
 FROM FACTURAS  
 GROUP BY CODCLI;
 
 --14.Obtener cuántas facturas tiene cada cliente, pero sólo si tiene dos o más  facturas.
-SELECT CODCLI, COUNT(*)  NUMERO_FACTURAS  
+SELECT COUNT(*)  NUMERO_FACTURAS  
 FROM FACTURAS  
 GROUP BY CODCLI  
 HAVING COUNT(*) >= 2;
@@ -78,10 +79,10 @@ ORDER BY NUMERO_CLIENTES DESC;
 
 /*20.Cantidades totales vendidas para cada artículo cuyo código empieza por “P", 
 mostrando también la descripción de dicho artículo.*/
-SELECT A.DESCRIP , COUNT (LF.CANT) CANTIDAD_VENDIDA
+SELECT A.DESCRIP , SUM(LF.CANT) CANTIDAD_VENDIDA
 FROM ARTICULOS a 
 JOIN LINEAS_FAC lf ON LF.CODART = A.CODART 
-WHERE A.CODART LIKE 'P%'
+WHERE UPPER(A.CODART) LIKE 'P%'
 GROUP BY A.DESCRIP;
 
 --21.Igual que el anterior pero mostrando también la diferencia entre el precio máximo y mínimo.
@@ -100,14 +101,15 @@ HAVING SUM(L.CANT * L.PRECIO) > 10000;
 
 /*23.Número de facturas de cada uno de los clientes cuyo código está entre 150 y 300 
 (se debe mostrar este código), con cada IVA distinto que se les ha aplicado.*/
-SELECT F.CODCLI, F.IVA, COUNT(*)  NUMERO_FACTURAS  
+SELECT DISTINCT F.CODCLI, F.IVA, COUNT(*)  NUMERO_FACTURAS  
 FROM FACTURAS F  
 WHERE F.CODCLI BETWEEN 150 AND 300  
 GROUP BY F.CODCLI, F.IVA;
 
 --24.Media del importe de las facturas, sin tener en cuenta impuestos ni descuentos.
-SELECT AVG(L.CANT * L.PRECIO) AS MEDIA_IMPORTE_FACTURAS  
-FROM LINEAS_FAC L;
+SELECT AVG(SUM(L.CANT * L.PRECIO))  MEDIA_IMPORTE_FACTURAS  
+FROM LINEAS_FAC L
+GROUP BY L.CODFAC;
 
 
 

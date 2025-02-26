@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Objects;
+
 public class Cancion {
 	
 	private String titulo;
@@ -9,7 +11,7 @@ public class Cancion {
 	private int anio;
 	private int numeroReproduccion;
 	
-	public Cancion(String titulo, String artista, double duracion, String disco, int anio, int numeroReproduccion) {
+	public Cancion(String titulo, String artista, double duracion, String disco, int anio) {
 		super();
 		this.titulo = titulo;
 		this.artista = artista;
@@ -32,6 +34,20 @@ public class Cancion {
 	public int getNumeroReproduccion() {
 		return numeroReproduccion;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(artista, disco, titulo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		return this==obj || obj!=null && obj instanceof Cancion && this.hashCode() == obj.hashCode();
+		
+	}
+	
+	
 	
 	
 
