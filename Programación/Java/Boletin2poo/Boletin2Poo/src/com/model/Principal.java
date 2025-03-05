@@ -1,6 +1,6 @@
 package com.model;
 
-public class principal {
+public class Principal {
 
 	public static void main(String[] args) {
 		
@@ -10,6 +10,8 @@ public class principal {
 		figura = new Triangulo(1,1,1);
 		System.out.println(figura.calcularArea());
 		System.out.println(figura);
+		
+		
 	}
 
 }

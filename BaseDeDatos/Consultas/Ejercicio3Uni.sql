@@ -28,22 +28,21 @@ GROUP BY AA.IDASIGNATURA;
 --6.Igual que el anterior pero mostrando el nombre de la asignatura.
 SELECT  A.NOMBRE, COUNT(AA.IDALUMNO)
 FROM ALUMNO_ASIGNATURA aa 
-RIGHT JOIN ASIGNATURA a ON AA.IDASIGNATURA = A.IDASIGNATURA
+JOIN ASIGNATURA a ON AA.IDASIGNATURA = A.IDASIGNATURA
 GROUP BY A.IDASIGNATURA, A.NOMBRE;
 
 --7.Mostrar para cada alumno, el nombre del alumno junto con lo que tendría que pagar por el total de todas las asignaturas 
 --en las que está matriculada. Recuerda que el precio de la matrícula tiene un incremento
 -- de un 10% por cada año en el que esté matriculado. 
-SELECT P.NOMBRE AS ALUMNO,SUM(A.COSTEBASICO * (1 + (0.1 * (S.CURSO - 1)))) AS TOTALPAGAR
+SELECT P.NOMBRE AS ALUMNO,SUM(A.COSTEBASICO * (1 + (0.1 * AA.NUMEROMATRICULA - 0.1))) AS TOTALPAGAR
 FROM ALUMNO_ASIGNATURA AA 
 JOIN ALUMNO AL ON AA.IDALUMNO = AL.IDALUMNO 
 JOIN PERSONA P ON AL.DNI = P.DNI 
 JOIN ASIGNATURA A ON AA.IDASIGNATURA = A.IDASIGNATURA 
-JOIN ASIGNATURA S ON A.IDASIGNATURA = S.IDASIGNATURA
 GROUP BY P.NOMBRE;
 
 --8.Coste medio de las asignaturas de cada titulación, para aquellas titulaciones en el que el coste total de la 1ª matrícula sea mayor que 60 euros. 
-SELECT T.NOMBRE, AVG(A.COSTEBASICO) AS COSTE_MEDIO
+SELECT AVG(A.COSTEBASICO) AS COSTE_MEDIO
 FROM TITULACION T
 JOIN ASIGNATURA A ON T.IDTITULACION = A.IDTITULACION
 GROUP BY T.NOMBRE
@@ -79,7 +78,7 @@ GROUP BY P.NOMBRE
 HAVING COUNT(AA.IDALUMNO) >= 2;
 
 --13.Obtener el máximo de las sumas de los costesbásicos de cada cuatrimestre
-SELECT A.CUATRIMESTRE, MAX(SUM(A.COSTEBASICO)) AS MAX_COSTE
+SELECT MAX(SUM(A.COSTEBASICO)) AS MAX_COSTE
 FROM ASIGNATURA A
 GROUP BY A.CUATRIMESTRE;
 
@@ -125,7 +124,10 @@ SELECT FECHA_NACIMIENTO, FECHA_NACIMIENTO + 1 AS DIA_SIGUIENTE
 FROM PERSONA;
 
 --24.Años de las personas de la Base de Datos, esta consulta tiene que valor para cualquier momento
+SELECT NOMBRE, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM FECHA_NACIMIENTO) AS EDAD 
+FROM PERSONA;
 --25.Listado de personas mayores de 25 años ordenadas por apellidos y nombre, esta consulta tiene que valor para cualquier momento
+
 --26.Nombres completos de los profesores que además son alumnos
 SELECT (P.NOMBRE || ' ' || P.APELLIDO) AS NOMBRECOMPLETO
 FROM PERSONA P

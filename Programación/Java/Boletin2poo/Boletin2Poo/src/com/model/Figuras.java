@@ -16,7 +16,7 @@ public abstract class Figuras {
 	
 	@Override
 	public String toString() {
-		return "Soy un " + getClass().getSimpleName()+" tengo "+this.numeroLados+" y mi area es: "+calcularArea();
+		return "Soy un " + getClass().getSimpleName()+", tengo "+this.numeroLados+" y mi area es: "+calcularArea();
 		
 	}
 
