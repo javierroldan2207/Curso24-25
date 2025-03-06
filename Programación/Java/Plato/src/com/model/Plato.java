@@ -47,7 +47,9 @@ public class Plato {
 		return this.vinoRecomendado.getGraduacion();
 		}
 
-	public double incrementarPrecio(double incremento) {
+	public double incrementarPrecio(double incremento) throws PrecioIncorrectoException {
+		if(incremento <= 0) {
+			throw new PrecioIncorrectoException();		}
 		return precio + incremento;
 	}
 

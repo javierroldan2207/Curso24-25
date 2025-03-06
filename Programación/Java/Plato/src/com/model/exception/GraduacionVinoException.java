@@ -2,8 +2,10 @@ package com.model.exception;
 
 public class GraduacionVinoException extends Exception {
 
+	private static final String MENSAJE_GRADUACION = "Graduacion incorrecta, no puede ser menor a 0.";
+	
 	public GraduacionVinoException() {
-		// TODO Auto-generated constructor stub
+		super(MENSAJE_GRADUACION);
 	}
 
 	public GraduacionVinoException(String message) {

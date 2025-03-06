@@ -1,9 +1,11 @@
 package com.model.exception;
 
 public class PrecioIncorrectoException extends Exception {
+	
+	private static String MENSAJE_PRECIO = "Precio incorrecto, no puede ser menor a 0.";
 
 	public PrecioIncorrectoException() {
-		// TODO Auto-generated constructor stub
+		super(MENSAJE_PRECIO);
 	}
 
 	public PrecioIncorrectoException(String message) {
