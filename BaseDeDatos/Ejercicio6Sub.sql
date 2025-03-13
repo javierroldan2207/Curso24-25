@@ -21,3 +21,13 @@ FROM ALUMNO_ASIGNATURA aa
 WHERE AA.IDASIGNATURA IN ('150212','130113')
 GROUP BY aa.IDALUMNO 
 HAVING COUNT(DISTINCT AA.IDASIGNATURA) = 1;
+
+--5. Mostrar el nombre de las asignaturas de la titulación "130110" cuyos costes básicos sobrepasen el coste básico promedio por asignatura en esa titulación.
+SELECT  A.NOMBRE
+FROM ASIGNATURA a 
+WHERE A.IDTITULACION = '130110'
+AND a.COSTEBASICO >= (SELECT AVG(A1.COSTEBASICO)
+					 FROM ASIGNATURA a1
+					 WHERE A.IDTITULACION = '130110');
+
+
