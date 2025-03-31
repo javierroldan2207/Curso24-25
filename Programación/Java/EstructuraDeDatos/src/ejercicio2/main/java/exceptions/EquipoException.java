@@ -1,4 +1,4 @@
-package Ejercicios.Ej2;
+package ejercicio2.main.java.exceptions;
 
 public class EquipoException extends Exception {
 
