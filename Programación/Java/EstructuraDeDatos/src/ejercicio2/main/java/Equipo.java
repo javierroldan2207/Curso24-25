@@ -64,15 +64,16 @@ public class Equipo {
 						   .allMatch(a -> a.getSexo() == 'M');	
 		}
 	
-	public int jugadorasMayorEdad() {
+	public long jugadorasMayorEdad() {
 		return	(int) grupoAlumnos.stream().filter(a -> a.getSexo() == 'M' && a.getEdad() >= 18)
 										   .count();
 		}
 	
-	public Optional<Integer> jugadorasConMenosEdadMayordeEdad() {
+	public int jugadorasConMenosEdadMayordeEdad() {
 		return  grupoAlumnos.stream().filter(a -> a.getSexo() == 'M' && a.getEdad() >= 18)
 							.map(Alumno::getEdad)
-							.min(Integer::compareTo);
+							.min((a,b) -> a-b)
+							.get();
 	}
 	
 	public Set<String> dniAlumnosmenoresEdad() {
@@ -87,9 +88,8 @@ public class Equipo {
 									.collect(Collectors.toList());
 	}
 	
-	public boolean existeJugadoramayorDeEdad() {
-		return grupoAlumnos.stream().filter(a -> a.getSexo() == 'M' && a.getEdad() >= 18)
-									.anyMatch(a -> true);
+	public boolean existeJugadoraMayorDeEdad() {
+		return grupoAlumnos.stream().anyMatch(a -> a.getSexo() == 'M' && a.getEdad() >= 18);
 	}
 	
 	public int contarCiudadesDiferentes() {

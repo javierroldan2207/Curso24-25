@@ -31,13 +31,13 @@ public class Main {
             
             System.out.println(equipoUnido.exclusiboFemenino());
             
-            System.out.println(equipoUnido.jugadorasConMenosEdadMayordeEdad().orElse(-1));
+            System.out.println(equipoUnido.jugadorasConMenosEdadMayordeEdad());
             
             System.out.println(equipoUnido.dniAlumnosmenoresEdad());
             
             System.out.println(equipoUnido.contarCiudadesDiferentes());
         } catch (Exception e) {
-            System.out.println("Se ha producido un error: " + e.ge tMessage());
+            System.out.println("Se ha producido un error: " + e.getMessage());
         }
     }
 }
