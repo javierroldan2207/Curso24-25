@@ -32,18 +32,33 @@ por cualquier razón no es posible actualizar todos estos salarios, debe
 deshacerse el trabajo a la situación inicial.*/
 
 CREATE OR REPLACE PROCEDURE subida_salario IS
-	v_id NUMBER;
-	v_nombre VARCHAR2(30);
-	v_salario NUMBER;
-	v_salario_final NUMBER;
+   CURSOR c_empleados IS
+       SELECT e.NUMEM, e.NOMEM, e.SALAR
+       FROM EMPLEADOS e
+       WHERE e.NUMHI > 2
+       AND e.SALAR < 2000;
 BEGIN
-	SELECT e.NUMDE, e.NOMEM, e.SALAR INTO v_id, v_nombre, v_salario
-	FROM EMPLEADOS e 
-	WHERE e.NUMHI > 2
-	AND e.SALAR < 2000;
-	
-END
+	COMMIT;
+   FOR emp IN c_empleados LOOP
+       DBMS_OUTPUT.PUT_LINE('Empleado: ' || emp.NUMEM || ' , nombre: ' || emp.NOMEM);
+       DBMS_OUTPUT.PUT_LINE('Salario antiguo: ' || emp.SALAR);
+      
+       UPDATE EMPLEADOS
+       SET SALAR = emp.SALAR * 1.10
+       WHERE NUMEM = emp.NUMEM;
+      
+       DBMS_OUTPUT.PUT_LINE('Salario final: ' || (emp.SALAR * 1.10));
+   END LOOP;
+   
+EXCEPTION
+   WHEN OTHERS THEN
+       ROLLBACK;
+END subida_salario;
 
++----------------------------------------------------------------------------------------------------++-+-+
+BEGIN
+   subida_salario;
+END;
 
 
 SELECT e.NUMDE, e.NOMEM, e.SALAR
@@ -53,11 +68,57 @@ AND e.SALAR < 2000;
 
 
 
+/*3. Escribe un procedimiento que reciba dos parámetros (número de
+departamento, hijos). Deber. crearse un cursor explícito al que se le pasarán
+estos parámetros y que mostrar. los datos de los empleados que pertenezcan
+al departamento y con el número de hijos indicados. Al final se indicara el
+número de empleados obtenidos.*/
 
 
+CREATE OR REPLACE PROCEDURE BOLETIN2PLSQL.padre_hijo(v_dep NUMBER , v_hijos NUMBER) IS 
+
+	CURSOR c_emp IS
+	 SELECT  e.NUMHI, e.NUMDE
+	 FROM EMPLEADOS e 
+	 WHERE v_dep = e.NUMDE
+	 AND v_hijos = e.NUMHI;
+
+	v_cant NUMBER:=0;
+BEGIN 
+	FOR emp IN c_emp LOOP 
+		DBMS_OUTPUT.PUT_LINE('Numero departamento: ' || v_dep);
+		DBMS_OUTPUT.PUT_LINE('Numero de hijos ' || v_hijos);
+		v_cant:= v_cant + 1;
+	END LOOP;
+	DBMS_OUTPUT.PUT_LINE('Numeros de empleados: ' || v_cant);
+END padre_hijo;
 
 
+BEGIN 
+	padre_hijo(121,3);
+END;
 
+/*4. Escribe un procedimiento con un parámetro para el nombre de empleado,
+que nos muestre la edad de dicho empleado en años, meses y días.*/
+
+CREATE OR REPLACE 
+PROCEDURE mostrar_edad(v_nombre varchar2) IS 
+	CURSOR c_edad IS 
+	SELECT 
+	INTO v_
+	FROM EMPLEADOS e;
+	
+	
+BEGIN 
+	DBMS_OUTPUT.PUT_LINE(c_edad);
+END mostrar_edad;
+
+BEGIN 
+	
+END;
+
+SELECT  e.FECNA - to_date(sysdate,'yyyy-mm-dd')
+FROM EMPLEADOS e ;
 
 
 
