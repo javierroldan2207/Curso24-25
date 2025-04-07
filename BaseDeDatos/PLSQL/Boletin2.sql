@@ -117,8 +117,7 @@ BEGIN
 	
 END;
 
-SELECT  e.FECNA - to_date(sysdate,'yyyy-mm-dd')
-FROM EMPLEADOS e ;
+
 
 
 
