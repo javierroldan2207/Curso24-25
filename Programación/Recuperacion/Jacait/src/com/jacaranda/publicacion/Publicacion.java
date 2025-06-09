@@ -3,22 +3,23 @@ package com.jacaranda.publicacion;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.jacaranda.memoryStorage.MemoryStorageException;
 import com.jacaranda.usuario.Usuario;
 
-public class Publicacion {
+public abstract class Publicacion implements Valorable, Comparable<Publicacion>{
 
 	protected String texto;
 	private LocalDate fechaCreacion;
 	protected int valoracion;
 	private int codigo;
-	private int codigoSiguiente;
+	private int codigoSiguiente = 0;
 	private Usuario usuario;
 	
 	public Publicacion(String texto, Usuario usuario) {
 		super();
 		this.texto = texto;
 		this.usuario = usuario;
+		this.codigoSiguiente++;
+		this.fechaCreacion = LocalDate.now();
 	}
 
 	protected String getTexto() {
@@ -56,17 +57,18 @@ public class Publicacion {
 	public boolean equals(Object obj) {
 		return this==obj || obj==null && obj instanceof Publicacion && this.hashCode() == obj.hashCode();
 	}
+
+	@Override
+	public abstract boolean valorar(String publi) throws PublicacionException ;
 	
-	
-	public boolean valorar(String publi) throws MemoryStorageException {
-		boolean bandera = false;
-		if(publi == null) {
-			bandera = false;
-			throw new MemoryStorageException("No se a encontardo ninguna publicacion para valorar.");
-		}
-		return bandera;
+	@Override
+	public int compareTo(Publicacion otra) {
+	   return Integer.compare(this.codigo, otra.codigo);
 	}
 	
 	
+	public boolean isAnterior(Publicacion otra) {
+        return this.fechaCreacion.isBefore(otra.getFechaCreacion());
+    }
 
 }

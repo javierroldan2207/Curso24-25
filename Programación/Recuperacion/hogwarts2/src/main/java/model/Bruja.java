@@ -107,14 +107,14 @@ public class Bruja {
 		}
 	}
 	
-	public void fechaUltimoEchizoLanzado() throws HogwartsException {
-		if(totalHechizos == 0) {
-			throw new HogwartsException("No existen hechizos realizados.");
-		}
-		else {
-			System.out.println(historial[-1].getFechaLanzamiento());
-		}
+	public LocalDate fechaUltimoEchizoLanzado() throws HogwartsException {
+	    if (totalHechizos == 0) {
+	        throw new HogwartsException("No existen hechizos realizados.");
+	    } else {
+	        return historial[totalHechizos - 1].getFechaLanzamiento();
+	    }
 	}
+
 	
 	public void mostrarHechizosDeUnaFecha(LocalDate fecha) {
 		boolean encontrado = false;
